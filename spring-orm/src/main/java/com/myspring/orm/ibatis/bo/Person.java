@@ -11,6 +11,8 @@ public class Person {
 
     private int age;
 
+    private Long countryId;
+
     public Long getId() {
         return id;
     }
@@ -35,12 +37,21 @@ public class Person {
         this.age = age;
     }
 
+    public Long getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Long countryId) {
+        this.countryId = countryId;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", countryId=" + countryId +
                 '}';
     }
 

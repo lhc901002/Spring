@@ -3,6 +3,11 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <typeAliases>
+        <typeAlias type="com.myspring.orm.ibatis.bo.Person" alias="Person" />
+        <typeAlias type="com.myspring.orm.ibatis.bo.Country" alias="Country" />
+    </typeAliases>
+
     <mappers>
         <mapper resource="mapper/PersonMapper.xml"/>
     </mappers>

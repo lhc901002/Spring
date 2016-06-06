@@ -1,5 +1,6 @@
 package com.myspring.orm.ibatis.service;
 
+import com.myspring.orm.ibatis.bo.Country;
 import com.myspring.orm.ibatis.bo.Person;
 import com.myspring.orm.ibatis.mapper.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,10 @@ public class PersonService {
 
     public void insertPerson(Person person) {
         personMapper.insertPerson(person);
+    }
+
+    public Country selectCountryByPersonId(Long personId) {
+        return personMapper.selectCountryByPersonId(personId);
     }
 
 }

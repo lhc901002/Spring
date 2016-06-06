@@ -1,5 +1,6 @@
 package com.myspring.orm.ibatis.mapper;
 
+import com.myspring.orm.ibatis.bo.Country;
 import com.myspring.orm.ibatis.bo.Person;
 
 /**
@@ -8,5 +9,7 @@ import com.myspring.orm.ibatis.bo.Person;
 public interface PersonMapper {
 
     void insertPerson(Person person);
+
+    Country selectCountryByPersonId(Long personId);
 
 }
