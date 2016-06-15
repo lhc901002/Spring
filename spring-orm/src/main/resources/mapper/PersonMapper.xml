@@ -37,6 +37,12 @@
         from person
     </select>
 
+    <select id="selectAllByLimit" resultMap="personBaseResultMap">
+        select
+        <include refid="person_Base_Column_List"/>
+        from person limit #{offset}, #{limit}
+    </select>
+
     <select id="selectCountryByPersonId" resultMap="countryBaseResultMap" parameterType="java.lang.Long">
         SELECT country.id, country.c_name
         FROM person, country

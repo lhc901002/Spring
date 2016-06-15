@@ -6,9 +6,11 @@
     <typeAliases>
         <typeAlias type="com.myspring.orm.ibatis.bo.Person" alias="Person" />
         <typeAlias type="com.myspring.orm.ibatis.bo.Country" alias="Country" />
+        <typeAlias type="com.myspring.orm.ibatis.bo.User" alias="User" />
     </typeAliases>
 
     <mappers>
         <mapper resource="mapper/PersonMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 </configuration>
