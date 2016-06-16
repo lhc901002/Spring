@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 类UserService
@@ -33,6 +34,11 @@ public class UserService {
         FileOutputStream fos = new FileOutputStream(new File("profile.txt"));
         fos.write(user.getProfile());
         return userVo;
+    }
+
+    public List<User> findUserListInUser(List<UserVo> userList) {
+        List<User> users = userMapper.selectUserListInUser(userList);
+        return users;
     }
 
     public void insertUser(UserVo userVo) throws IOException {

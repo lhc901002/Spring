@@ -28,6 +28,17 @@
         from user
     </select>
 
+    <select id="selectUserListInUser" resultMap="userBaseResultMap" parameterType="java.util.List">
+        select
+        <include refid="user_Base_Column_List"/>
+        from user
+        WHERE uid IN
+        <foreach item="user" index="index" collection="userList" open="(" separator="," close=")">
+            #{user.id}
+        </foreach>
+    </select>
+
+
     <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         <![CDATA[
         insert into user (uid, uname, create_time, profile)
