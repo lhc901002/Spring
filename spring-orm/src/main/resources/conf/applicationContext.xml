@@ -2,59 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:context="http://www.springframework.org/schema/context"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xmlns:aop="http://www.springframework.org/schema/aop"
-	   xmlns:tx="http://www.springframework.org/schema/tx"
 	   xsi:schemaLocation="http://www.springframework.org/schema/context
 					       http://www.springframework.org/schema/context/spring-context.xsd
 					       http://www.springframework.org/schema/beans
-					       http://www.springframework.org/schema/beans/spring-beans.xsd
-					       http://www.springframework.org/schema/aop
-					       http://www.springframework.org/schema/aop/spring-aop.xsd
-					       http://www.springframework.org/schema/tx 
-	   					   http://www.springframework.org/schema/tx/spring-tx.xsd">
+					       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <context:component-scan base-package="org.mliuframework.spring.orm.ibatis.service" />
-	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/test" />
-		<property name="username" value="root" />
-		<property name="password" value="" />
-	</bean>
-	
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	    <property name="dataSource" ref="dataSource" />
-	    <property name="configLocation" value="classpath:conf/mybatis-config.xml"></property>
-	</bean>
-	
-	<bean id="personMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-	    <property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.PersonMapper"></property>
-	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean>
 
-	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.UserMapper"></property>
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean>
-    
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
-  
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-	  <tx:attributes>
-	    <tx:method name="delete*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception"/>
-	    <tx:method name="insert*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception" />
-	    <tx:method name="update*" propagation="REQUIRED" read-only="false" rollback-for="java.lang.Exception" />
-	    <tx:method name="find*" propagation="SUPPORTS"/>
-	    <tx:method name="get*" propagation="SUPPORTS"/>
-	    <tx:method name="select*" propagation="SUPPORTS"/>
-	  </tx:attributes>
-	</tx:advice>
-	
-	<aop:config proxy-target-class="true">    
-	  <aop:pointcut id="serviceMethod" expression="execution(public * org.mliuframework.spring.orm.ibatis.service.*.*(..))" />
-	  <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
-	</aop:config>
-    
+	<import resource="classpath:conf/mybatis/mapper-config.xml" />
+
+
 </beans>
