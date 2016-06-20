@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.myspring.orm.ibatis.mapper.UserMapper">
+<mapper namespace="org.mliuframework.spring.orm.ibatis.mapper.UserMapper">
 
     <resultMap id="userBaseResultMap" type="User">
         <id column="uid" property="id" jdbcType="INTEGER"/>

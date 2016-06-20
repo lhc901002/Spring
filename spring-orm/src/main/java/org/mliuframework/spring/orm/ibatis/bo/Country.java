@@ -1,4 +1,4 @@
-package com.myspring.orm.ibatis.bo;
+package org.mliuframework.spring.orm.ibatis.bo;
 
 /**
  * Created by liuhaocheng on 6/6/16.

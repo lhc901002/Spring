@@ -1,4 +1,4 @@
-package com.myspring.orm.ibatis.util;
+package org.mliuframework.spring.orm.ibatis.util;
 
 import org.springframework.util.StringUtils;
 

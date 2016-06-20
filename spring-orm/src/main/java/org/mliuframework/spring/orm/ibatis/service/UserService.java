@@ -1,9 +1,9 @@
-package com.myspring.orm.ibatis.service;
+package org.mliuframework.spring.orm.ibatis.service;
 
-import com.myspring.orm.ibatis.bo.User;
-import com.myspring.orm.ibatis.mapper.UserMapper;
-import com.myspring.orm.ibatis.util.MyDateUtil;
-import com.myspring.orm.ibatis.vo.UserVo;
+import org.mliuframework.spring.orm.ibatis.bo.User;
+import org.mliuframework.spring.orm.ibatis.mapper.UserMapper;
+import org.mliuframework.spring.orm.ibatis.util.MyDateUtil;
+import org.mliuframework.spring.orm.ibatis.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

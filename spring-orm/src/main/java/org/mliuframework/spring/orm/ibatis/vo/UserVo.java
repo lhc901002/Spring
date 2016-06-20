@@ -1,4 +1,4 @@
-package com.myspring.orm.ibatis.vo;
+package org.mliuframework.spring.orm.ibatis.vo;
 
 import java.util.Date;
 

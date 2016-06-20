@@ -1,4 +1,4 @@
-package com.myspring.orm.ibatis.bo;
+package org.mliuframework.spring.orm.ibatis.bo;
 
 import java.util.Arrays;
 import java.util.Date;

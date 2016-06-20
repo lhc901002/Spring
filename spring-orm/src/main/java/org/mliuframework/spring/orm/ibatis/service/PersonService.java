@@ -1,8 +1,8 @@
-package com.myspring.orm.ibatis.service;
+package org.mliuframework.spring.orm.ibatis.service;
 
-import com.myspring.orm.ibatis.bo.Country;
-import com.myspring.orm.ibatis.bo.Person;
-import com.myspring.orm.ibatis.mapper.PersonMapper;
+import org.mliuframework.spring.orm.ibatis.bo.Country;
+import org.mliuframework.spring.orm.ibatis.bo.Person;
+import org.mliuframework.spring.orm.ibatis.mapper.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

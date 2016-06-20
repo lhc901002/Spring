@@ -13,7 +13,7 @@
 					       http://www.springframework.org/schema/tx 
 	   					   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="com.myspring.orm.ibatis.service" />
+    <context:component-scan base-package="org.mliuframework.spring.orm.ibatis.service" />
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -28,12 +28,12 @@
 	</bean>
 	
 	<bean id="personMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-	    <property name="mapperInterface" value="com.myspring.orm.ibatis.mapper.PersonMapper"></property>
+	    <property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.PersonMapper"></property>
 	    <property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 
 	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.myspring.orm.ibatis.mapper.UserMapper"></property>
+		<property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.UserMapper"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
     
@@ -53,7 +53,7 @@
 	</tx:advice>
 	
 	<aop:config proxy-target-class="true">    
-	  <aop:pointcut id="serviceMethod" expression="execution(public * com.myspring.orm.ibatis.service.*.*(..))" />
+	  <aop:pointcut id="serviceMethod" expression="execution(public * org.mliuframework.spring.orm.ibatis.service.*.*(..))" />
 	  <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
 	</aop:config>
     

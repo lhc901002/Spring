@@ -1,7 +1,7 @@
-package com.myspring.orm.ibatis.mapper;
+package org.mliuframework.spring.orm.ibatis.mapper;
 
-import com.myspring.orm.ibatis.bo.Country;
-import com.myspring.orm.ibatis.bo.Person;
+import org.mliuframework.spring.orm.ibatis.bo.Country;
+import org.mliuframework.spring.orm.ibatis.bo.Person;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

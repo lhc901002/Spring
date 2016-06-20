@@ -1,9 +1,9 @@
-package com.myspring.orm.ibatis.controller;
+package org.mliuframework.spring.orm.ibatis.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.myspring.orm.ibatis.bo.User;
-import com.myspring.orm.ibatis.service.UserService;
-import com.myspring.orm.ibatis.vo.UserVo;
+import org.mliuframework.spring.orm.ibatis.bo.User;
+import org.mliuframework.spring.orm.ibatis.service.UserService;
+import org.mliuframework.spring.orm.ibatis.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
