@@ -12,7 +12,7 @@ public class Address {
 
     private String city;
 
-    private String address;
+    private String street;
 
     private String zipCode;
 
@@ -26,28 +26,12 @@ public class Address {
 
     private Date updateTime;
 
-    public String getAddress() {
-        return address;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public Long getId() {
@@ -58,6 +42,14 @@ public class Address {
         this.id = id;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public String getProvince() {
         return province;
     }
@@ -66,20 +58,20 @@ public class Address {
         this.province = province;
     }
 
-    public Boolean getStatus() {
-        return status;
+    public String getCity() {
+        return city;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public Byte getType() {
-        return type;
+    public String getStreet() {
+        return street;
     }
 
-    public void setType(Byte type) {
-        this.type = type;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getZipCode() {
@@ -90,12 +82,20 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Byte getType() {
+        return type;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setType(Byte type) {
+        this.type = type;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     public Date getCreateTime() {
@@ -105,5 +105,4 @@ public class Address {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
 }

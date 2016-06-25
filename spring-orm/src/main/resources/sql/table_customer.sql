@@ -27,7 +27,7 @@ CREATE TABLE `tb_address` (
   `country` VARCHAR(20) NOT NULL DEFAULT '',
   `province` VARCHAR(20) NOT NULL DEFAULT 'province or state',
   `city` VARCHAR(20) NOT NULL DEFAULT '',
-  `address` VARCHAR(100) NOT NULL DEFAULT '',
+  `street` VARCHAR(100) NOT NULL DEFAULT '',
   `zip_code` VARCHAR(20) NOT NULL DEFAULT '',
   `address_type` TINYINT(2) NOT NULL DEFAULT 2 COMMENT '1 permanent address, 2 mailing address',
   `status` BOOL NOT NULL DEFAULT TRUE COMMENT 'TRUE in use, FALSE no longer in use',
