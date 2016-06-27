@@ -15,14 +15,13 @@ public class AddressService {
     private AddressMapper addressMapper;
 
     public Address saveOrUpdate(Address address) {
-        Address rspAddress = null;
         if (address.getId() == null) {
-            rspAddress = addressMapper.insertSelective(address);
+            Long newId = addressMapper.insertSelective(address);
+            address.setId(newId);
         } else {
             addressMapper.updateByPrimaryKeySelective(address);
-            rspAddress = address;
         }
-        return rspAddress;
+        return address;
     }
 
 }

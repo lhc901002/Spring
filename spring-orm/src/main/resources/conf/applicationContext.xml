@@ -11,5 +11,4 @@
 
 	<import resource="classpath:conf/mybatis/mapper-config.xml" />
 
-
 </beans>

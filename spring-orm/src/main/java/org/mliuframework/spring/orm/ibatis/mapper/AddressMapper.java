@@ -13,9 +13,9 @@ public interface AddressMapper {
 
     List<Address> selectAll();
 
-    Address insert(Address address);
+    Long insert(Address address);
 
-    Address insertSelective(Address address);
+    Long insertSelective(Address address);
 
     void updateByPrimaryKeySelective(Address address);
 

@@ -1,23 +1,21 @@
 package org.mliuframework.spring.orm.ibatis.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/test")
 public class TestController {
 
-    @RequestMapping(value = "/go")
+    private static final Logger log = Logger.getLogger(TestController.class);
+
+    @RequestMapping(value = "/go", method = RequestMethod.GET)
     @ResponseBody
-    public String go(HttpServletRequest request) {
-        String id = request.getHeader("id");
-        String pid = request.getParameter("id");
-        System.out.println(id);
-        System.out.println(pid);
-        return pid;
+    public String go() {
+        return "ok";
     }
 
 }
