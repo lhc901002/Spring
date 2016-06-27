@@ -43,6 +43,8 @@ CREATE TABLE `tb_customer_address_relation` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key',
   `customer_id` BIGINT(20) NOT NULL DEFAULT -1 COMMENT 'foreign key reference tb_customer.id',
   `address_id` BIGINT(20) NOT NULL DEFAULT -1 COMMENT 'foreign key reference tb_address.id',
+  `status` BOOL NOT NULL DEFAULT TRUE COMMENT 'TRUE in use, FALSE no longer in use',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   FOREIGN KEY `fk_customer_id` (`customer_id`) REFERENCES tb_customer(`id`),
   FOREIGN KEY `fk_address_id` (`address_id`) REFERENCES tb_address(`id`),
