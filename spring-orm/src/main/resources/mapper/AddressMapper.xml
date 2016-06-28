@@ -6,6 +6,7 @@
 
     <resultMap id="addressBaseResultMap" type="Address">
         <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="customer_id" property="customerId" jdbcType="BIGINT"/>
         <result column="country" property="country" jdbcType="VARCHAR"/>
         <result column="province" property="province" jdbcType="VARCHAR"/>
         <result column="city" property="city" jdbcType="VARCHAR"/>
@@ -19,7 +20,8 @@
     </resultMap>
 
     <sql id="address_Base_Column_List">
-        id, country, province, city, street, zip_code, address_type, status, create_time, update_time
+        id, customer_id, country, province, city, street, zip_code,
+        address_type, status, create_time, update_time
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="addressBaseResultMap" parameterType="Long">
@@ -37,13 +39,14 @@
 
     <insert id="insert" parameterType="Address" useGeneratedKeys="true" keyProperty="id">
         <![CDATA[
-        insert into tb_address (id, country, province, city, street, zip_code,
-        address_type, status, create_time, update_time)
-        values (#{id, jdbcType=BIGINT}, #{country, jdbcType=VARCHAR},
-                #{province, jdbcType=VARCHAR}, #{city, jdbcType=VARCHAR},
-                #{street, jdbcType=VARCHAR}, #{zipCode, jdbcType=VARCHAR},
-                #{type, jdbcType=TINYINT}, #{status, jdbcType=BOOLEAN},
-                #{createTime, jdbcType=TIMESTAMP}, #{updateTime, jdbcType=TIMESTAMP})
+        insert into tb_address (id, customer_id, country, province, city, street,
+        zip_code, address_type, status, create_time, update_time)
+        values (#{id, jdbcType=BIGINT}, #{customerId, jdbcType=BIGINT},
+                #{country, jdbcType=VARCHAR}, #{province, jdbcType=VARCHAR},
+                #{city, jdbcType=VARCHAR}, #{street, jdbcType=VARCHAR},
+                #{zipCode, jdbcType=VARCHAR}, #{type, jdbcType=TINYINT},
+                #{status, jdbcType=BOOLEAN}, #{createTime, jdbcType=TIMESTAMP},
+                #{updateTime, jdbcType=TIMESTAMP})
         ]]>
     </insert>
 
@@ -52,6 +55,9 @@
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
+            </if>
+            <if test="customerId != null">
+                customer_id,
             </if>
             <if test="country != null">
                 country,
@@ -84,6 +90,9 @@
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 #{id, jdbcType=BIGINT},
+            </if>
+            <if test="customerId != null">
+                #{customerId, jdbcType=BIGINT},
             </if>
             <if test="country != null">
                 #{country, jdbcType=VARCHAR},

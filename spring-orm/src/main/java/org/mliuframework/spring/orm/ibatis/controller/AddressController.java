@@ -1,9 +1,16 @@
 package org.mliuframework.spring.orm.ibatis.controller;
 
 import com.alibaba.fastjson.JSON;
-import org.apache.log4j.Logger;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.mliuframework.spring.orm.ibatis.bo.Address;
 import org.mliuframework.spring.orm.ibatis.service.AddressService;
+import org.mliuframework.spring.orm.ibatis.util.ConstantUtils;
+import org.mliuframework.spring.orm.ibatis.util.PropertyUtils;
+import org.mliuframework.spring.orm.ibatis.vo.AddressVo;
+import org.mliuframework.spring.orm.ibatis.vo.RspAddressVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,25 +25,39 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/address")
 public class AddressController {
 
-    private static final Logger log = Logger.getLogger(AddressController.class);
+    private static final Log log = LogFactory.getLog(AddressController.class);
 
     @Autowired
     private AddressService addressService;
 
     /**
-     *
-     * @param address
-     * @return
-     *
-     * http://localhost:8080/orm/address/saveAddress
+     * http://localhost:8080/orm/address/save
      */
-    @RequestMapping(value = "/saveAddress", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
-    public String saveAddress(@RequestBody Address address) {
-        log.info("saveAddress receive: " + address);
-        Address rspAddress = addressService.saveOrUpdate(address);
-        log.info("saveAddress return: " + rspAddress);
-        return JSON.toJSONString(rspAddress);
+    public RspAddressVo doSave(@RequestBody Address address) {
+        log.info("saveAddress receive: " + JSON.toJSONString(address));
+        RspAddressVo rspVo = new RspAddressVo();
+        try {
+            Address addressEntity = addressService.saveOrUpdateSelective(address);
+            AddressVo addressVo = new AddressVo();
+            BeanUtils.copyProperties(addressEntity, addressVo);
+            addressVo.setCreateTime(DateFormatUtils.format(addressEntity.getCreateTime(),
+                    ConstantUtils.DEFAULT_DATETIME_PATTERN));
+            addressVo.setUpdateTime(DateFormatUtils.format(addressEntity.getUpdateTime(),
+                    ConstantUtils.DEFAULT_DATETIME_PATTERN));
+            rspVo.setAddress(addressVo);
+            rspVo.setStatus(ConstantUtils.STATUS_SUCCESS);
+            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX) +
+                    ConstantUtils.STATUS_SUCCESS);
+        } catch (Exception e) {
+            log.error("saveAddress throws exception: " + e);
+            rspVo.setStatus(ConstantUtils.STATUS_FAIL);
+            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX) +
+                    ConstantUtils.STATUS_EXCEPTION + ": " + e);
+        }
+        log.info("saveAddress return: " + JSON.toJSONString(rspVo));
+        return rspVo;
     }
 
 }

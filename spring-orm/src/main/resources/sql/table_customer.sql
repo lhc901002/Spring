@@ -1,4 +1,5 @@
 SET NAMES utf8;
+
 DROP TABLE IF EXISTS `tb_customer`;
 CREATE TABLE `tb_customer` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key',
@@ -24,6 +25,7 @@ CREATE TABLE `tb_customer` (
 DROP TABLE IF EXISTS `tb_address`;
 CREATE TABLE `tb_address` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key',
+  `customer_id` BIGINT(20) NOT NULL DEFAULT -1 COMMENT 'foreign key reference tb_customer.id',
   `country` VARCHAR(20) NOT NULL DEFAULT '',
   `province` VARCHAR(20) NOT NULL DEFAULT 'province or state',
   `city` VARCHAR(20) NOT NULL DEFAULT '',
@@ -34,21 +36,8 @@ CREATE TABLE `tb_address` (
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
+  FOREIGN KEY `fk_customer_id` (`customer_id`) REFERENCES tb_customer(`id`),
+  KEY `idx_customer_id` (`customer_id`),
   KEY `idx_create_time` (`create_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='address entity';
-
-
-DROP TABLE IF EXISTS `tb_customer_address_relation`;
-CREATE TABLE `tb_customer_address_relation` (
-  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key',
-  `customer_id` BIGINT(20) NOT NULL DEFAULT -1 COMMENT 'foreign key reference tb_customer.id',
-  `address_id` BIGINT(20) NOT NULL DEFAULT -1 COMMENT 'foreign key reference tb_address.id',
-  `status` BOOL NOT NULL DEFAULT TRUE COMMENT 'TRUE in use, FALSE no longer in use',
-  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY `fk_customer_id` (`customer_id`) REFERENCES tb_customer(`id`),
-  FOREIGN KEY `fk_address_id` (`address_id`) REFERENCES tb_address(`id`),
-  KEY `idx_customer_id` (`customer_id`),
-  KEY `idx_address_id` (`address_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='relation entity between customer and address';
 

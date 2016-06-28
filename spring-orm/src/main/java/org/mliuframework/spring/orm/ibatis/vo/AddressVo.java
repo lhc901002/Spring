@@ -1,8 +1,9 @@
-package org.mliuframework.spring.orm.ibatis.bo;
+package org.mliuframework.spring.orm.ibatis.vo;
 
-import java.util.Date;
-
-public class Address {
+/**
+ * Created by Michael on 6/27/16.
+ */
+public class AddressVo {
 
     private Long id;
 
@@ -22,19 +23,11 @@ public class Address {
     private Byte type;
 
     /** true for valid, false no longer in use */
-    private Boolean status;
+    private String status;
 
-    private Date createTime;
+    private String createTime;
 
-    private Date updateTime;
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
+    private String updateTime;
 
     public Long getId() {
         return id;
@@ -100,20 +93,28 @@ public class Address {
         this.type = type;
     }
 
-    public Boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 
 }
