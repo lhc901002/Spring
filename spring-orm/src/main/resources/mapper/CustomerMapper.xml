@@ -191,40 +191,40 @@
         update tb_customer
         <set>
             <if test="nickName != null">
-                #{nickName, jdbcType=VARCHAR},
+                nick_name = #{nickName, jdbcType=VARCHAR},
             </if>
             <if test="surName != null">
-                #{surName, jdbcType=VARCHAR},
+                sur_name = #{surName, jdbcType=VARCHAR},
             </if>
             <if test="givenName != null">
-                #{givenName, jdbcType=VARCHAR},
+                given_name = #{givenName, jdbcType=VARCHAR},
             </if>
             <if test="gender != null">
-                #{gender, jdbcType=TINYINT},
+                gender = #{gender, jdbcType=TINYINT},
             </if>
             <if test="phoneNo != null">
-                #{phoneNo, jdbcType=VARCHAR},
+                phone_no = #{phoneNo, jdbcType=VARCHAR},
             </if>
             <if test="email != null">
-                #{email, jdbcType=VARCHAR},
+                email = #{email, jdbcType=VARCHAR},
             </if>
             <if test="headImageUrl != null">
-                #{headImageUrl, jdbcType=VARCHAR},
+                head_image_url = #{headImageUrl, jdbcType=VARCHAR},
             </if>
             <if test="starLevel != null">
-                #{starLevel, jdbcType=INTEGER},
+                star_level = #{starLevel, jdbcType=INTEGER},
             </if>
             <if test="score != null">
-                #{score, jdbcType=INTEGER},
+                score = #{score, jdbcType=INTEGER},
             </if>
             <if test="details != null">
-                #{details, jdbcType=BLOB},
+                details = #{details, jdbcType=BLOB},
             </if>
             <if test="createTime != null">
-                #{createTime, jdbcType=TIMESTAMP},
+                create_time = #{createTime, jdbcType=TIMESTAMP},
             </if>
             <if test="updateTime != null">
-                #{updateTime, jdbcType=TIMESTAMP},
+                update_time = #{updateTime, jdbcType=TIMESTAMP},
             </if>
         </set>
         where id = #{id,jdbcType=BIGINT}

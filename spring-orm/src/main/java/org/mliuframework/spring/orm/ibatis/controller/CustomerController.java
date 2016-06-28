@@ -39,19 +39,23 @@ public class CustomerController {
             Customer customerEntity = customerService.saveOrUpdateSelective(customer);
             CustomerVo customerVo = new CustomerVo();
             BeanUtils.copyProperties(customerEntity, customerVo);
-            customerVo.setCreateTime(DateFormatUtils.format(customerEntity.getCreateTime(),
-                    ConstantUtils.DEFAULT_DATETIME_PATTERN));
-            customerVo.setUpdateTime(DateFormatUtils.format(customerEntity.getUpdateTime(),
-                    ConstantUtils.DEFAULT_DATETIME_PATTERN));
+            if (null != customerEntity.getCreateTime()) {
+                customerVo.setCreateTime(DateFormatUtils.format(customerEntity.getCreateTime(),
+                        ConstantUtils.DEFAULT_DATETIME_PATTERN));
+            }
+            if (null != customerEntity.getUpdateTime()) {
+                customerVo.setUpdateTime(DateFormatUtils.format(customerEntity.getUpdateTime(),
+                        ConstantUtils.DEFAULT_DATETIME_PATTERN));
+            }
             rspVo.setCustomer(customerVo);
             rspVo.setStatus(ConstantUtils.STATUS_SUCCESS);
-            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX) +
-                    ConstantUtils.STATUS_SUCCESS);
+            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                    ConstantUtils.STATUS_SUCCESS));
         } catch (Exception e) {
             log.error("doSave customer throws exception: " + e);
-            rspVo.setStatus(ConstantUtils.STATUS_FAIL);
-            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX) +
-                    ConstantUtils.STATUS_EXCEPTION + ": " + e);
+            rspVo.setStatus(ConstantUtils.STATUS_EXCEPTION);
+            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                    ConstantUtils.STATUS_EXCEPTION) + ": " + e);
         }
         log.info("doSave customer return: " + JSON.toJSONString(rspVo));
         return rspVo;

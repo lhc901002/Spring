@@ -25,18 +25,17 @@ public class AddressService {
 
     public Address saveOrUpdateSelective(Address address) throws Exception {
         try {
-            Address addressEntity = new Address();
             if (null == address.getId()) {
                 if (null == address.getCustomerId()) {
                     throw new IllegalArgumentException("Parameter should include addressId " +
                             "or customerId!");
                 } else {
-                    Customer customerResultEntity = customerMapper.selectByPrimaryKey(address.getCustomerId());
+                    Customer customerResultEntity = customerMapper.
+                            selectByPrimaryKey(address.getCustomerId());
                     if (null == customerResultEntity) {
                         throw new IllegalArgumentException("CustomerId does not exist!");
                     } else {
-                        Long newId = addressMapper.insertSelective(addressEntity);
-                        address.setId(newId);
+                        addressMapper.insertSelective(address);
                     }
                 }
             } else {

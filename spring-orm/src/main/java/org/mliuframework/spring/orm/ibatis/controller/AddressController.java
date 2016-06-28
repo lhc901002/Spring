@@ -42,19 +42,23 @@ public class AddressController {
             Address addressEntity = addressService.saveOrUpdateSelective(address);
             AddressVo addressVo = new AddressVo();
             BeanUtils.copyProperties(addressEntity, addressVo);
-            addressVo.setCreateTime(DateFormatUtils.format(addressEntity.getCreateTime(),
-                    ConstantUtils.DEFAULT_DATETIME_PATTERN));
-            addressVo.setUpdateTime(DateFormatUtils.format(addressEntity.getUpdateTime(),
-                    ConstantUtils.DEFAULT_DATETIME_PATTERN));
+            if (null != addressEntity.getCreateTime()) {
+                addressVo.setCreateTime(DateFormatUtils.format(addressEntity.getCreateTime(),
+                        ConstantUtils.DEFAULT_DATETIME_PATTERN));
+            }
+            if (null != addressEntity.getUpdateTime()) {
+                addressVo.setUpdateTime(DateFormatUtils.format(addressEntity.getUpdateTime(),
+                        ConstantUtils.DEFAULT_DATETIME_PATTERN));
+            }
             rspVo.setAddress(addressVo);
             rspVo.setStatus(ConstantUtils.STATUS_SUCCESS);
-            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX) +
-                    ConstantUtils.STATUS_SUCCESS);
+            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                    ConstantUtils.STATUS_SUCCESS));
         } catch (Exception e) {
             log.error("doSave address throws exception: " + e);
             rspVo.setStatus(ConstantUtils.STATUS_FAIL);
-            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX) +
-                    ConstantUtils.STATUS_EXCEPTION + ": " + e);
+            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                    ConstantUtils.STATUS_EXCEPTION) + ": " + e);
         }
         log.info("doSave address return: " + JSON.toJSONString(rspVo));
         return rspVo;

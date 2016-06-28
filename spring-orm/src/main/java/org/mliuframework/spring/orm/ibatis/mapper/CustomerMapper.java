@@ -19,9 +19,9 @@ public interface CustomerMapper {
 
     List<Customer> selectAll();
 
-    Long insert(Customer customer);
+    void insert(Customer customer);
 
-    Long insertSelective(Customer customer);
+    void insertSelective(Customer customer);
 
     void updateByPrimaryKeySelective(Customer customer);
 

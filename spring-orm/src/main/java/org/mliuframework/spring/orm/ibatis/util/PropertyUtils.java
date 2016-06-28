@@ -33,7 +33,7 @@ public class PropertyUtils {
 
     private static String getValue(ResourceBundle resourceBundle, String key) {
         String value = "";
-        if (null != resourceBundle && StringUtils.isEmpty(key)) {
+        if (null != resourceBundle && StringUtils.isNotEmpty(key)) {
             value = resourceBundle.getString(key);
         }
         return value;

@@ -25,7 +25,6 @@ public class CustomerService {
                 if (StringUtils.isEmpty(customer.getPhoneNo()) ||
                         StringUtils.isEmpty(customer.getEmail())) {
                     throw new IllegalArgumentException("Phone Number and email cannot be empty!");
-
                 } else {
                     Customer customerResultEntity = customerMapper.selectByPhoneNo(customer.getPhoneNo());
                     if (customerResultEntity != null) {
@@ -36,8 +35,7 @@ public class CustomerService {
                         throw new IllegalStateException("Email already exists!");
                     }
                 }
-                Long newId = customerMapper.insertSelective(customer);
-                customer.setId(newId);
+                customerMapper.insertSelective(customer);
             } else {
                 customerMapper.updateByPrimaryKeySelective(customer);
             }
