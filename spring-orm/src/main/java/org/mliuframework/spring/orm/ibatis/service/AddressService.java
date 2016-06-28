@@ -31,8 +31,8 @@ public class AddressService {
                     throw new IllegalArgumentException("Parameter should include addressId " +
                             "or customerId!");
                 } else {
-                    Customer customer = customerMapper.selectByPrimaryKey(address.getCustomerId());
-                    if (null == customer.getId()) {
+                    Customer customerResultEntity = customerMapper.selectByPrimaryKey(address.getCustomerId());
+                    if (null == customerResultEntity) {
                         throw new IllegalArgumentException("CustomerId does not exist!");
                     } else {
                         Long newId = addressMapper.insertSelective(addressEntity);

@@ -32,6 +32,55 @@
         where id = #{id, jdbcType=BIGINT}
     </select>
 
+    <select id="selectByProperties" resultMap="customerBaseResultMap" parameterType="Customer">
+        select
+        <include refid="customer_Base_Column_List"/>
+        from tb_customer
+        <where>
+            <if test="nickName != null and nickName != ''">
+                `nick_name` = #{nickName, jdbcType=VARCHAR}
+            </if>
+            <if test="surName != null and surName != ''">
+                AND `sur_name` = #{surName, jdbcType=VARCHAR}
+            </if>
+            <if test="givenName != null and givenName != ''">
+                AND `given_name` = #{givenName, jdbcType=VARCHAR}
+            </if>
+            <if test="gender != null">
+                AND `gender` = #{gender, jdbcType=TINYINT}
+            </if>
+            <if test="phoneNo != null and phoneNo != ''">
+                AND `phone_no` = #{phoneNo, jdbcType=VARCHAR}
+            </if>
+            <if test="email != null and email != ''">
+                AND `email` = #{email, jdbcType=VARCHAR}
+            </if>
+            <if test="headImageUrl != null and headImageUrl != ''">
+                AND `head_image_url` = #{headImageUrl, jdbcType=VARCHAR}
+            </if>
+            <if test="starLevel != null">
+                AND `star_level` = #{starLevel, jdbcType=INTEGER}
+            </if>
+            <if test="score != null">
+                AND `score` = #{score, jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByPhoneNo" resultMap="customerBaseResultMap" parameterType="String">
+        select
+        <include refid="customer_Base_Column_List"/>
+        from tb_customer
+        WHERE phone_no = #{phoneNo, jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByEmail" resultMap="customerBaseResultMap" parameterType="String">
+        select
+        <include refid="customer_Base_Column_List"/>
+        from tb_customer
+        WHERE email = #{email, jdbcType=VARCHAR}
+    </select>
+
     <select id="selectAll" resultMap="customerBaseResultMap">
         select
         <include refid="customer_Base_Column_List"/>

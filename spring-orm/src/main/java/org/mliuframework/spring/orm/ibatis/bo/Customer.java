@@ -1,5 +1,7 @@
 package org.mliuframework.spring.orm.ibatis.bo;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Date;
 
 public class Customer {
@@ -22,6 +24,10 @@ public class Customer {
     private String email;
 
     private String headImageUrl;
+
+    private Integer starLevel;
+
+    private Integer score;
 
     private Byte [] details;
 
@@ -101,6 +107,22 @@ public class Customer {
         this.nickName = nickName;
     }
 
+    public Integer getStarLevel() {
+        return starLevel;
+    }
+
+    public void setStarLevel(Integer starLevel) {
+        this.starLevel = starLevel;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
     public String getPhoneNo() {
         return phoneNo;
     }
@@ -115,6 +137,11 @@ public class Customer {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Boolean hasAllRequiredField() {
+        return StringUtils.isNotEmpty(nickName) && StringUtils.isNotEmpty(phoneNo) &&
+                StringUtils.isNotEmpty(email);
     }
 
 }

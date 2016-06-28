@@ -36,7 +36,7 @@ public class AddressController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
     public RspAddressVo doSave(@RequestBody Address address) {
-        log.info("saveAddress receive: " + JSON.toJSONString(address));
+        log.info("doSave address receive: " + JSON.toJSONString(address));
         RspAddressVo rspVo = new RspAddressVo();
         try {
             Address addressEntity = addressService.saveOrUpdateSelective(address);
@@ -51,12 +51,12 @@ public class AddressController {
             rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX) +
                     ConstantUtils.STATUS_SUCCESS);
         } catch (Exception e) {
-            log.error("saveAddress throws exception: " + e);
+            log.error("doSave address throws exception: " + e);
             rspVo.setStatus(ConstantUtils.STATUS_FAIL);
             rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX) +
                     ConstantUtils.STATUS_EXCEPTION + ": " + e);
         }
-        log.info("saveAddress return: " + JSON.toJSONString(rspVo));
+        log.info("doSave address return: " + JSON.toJSONString(rspVo));
         return rspVo;
     }
 

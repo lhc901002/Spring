@@ -1,5 +1,6 @@
 package org.mliuframework.spring.orm.ibatis.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mliuframework.spring.orm.ibatis.bo.Customer;
@@ -18,9 +19,23 @@ public class CustomerService {
     @Autowired
     private CustomerMapper customerMapper;
 
-    public Customer saveOrUpdate(Customer customer) throws Exception {
+    public Customer saveOrUpdateSelective(Customer customer) throws Exception {
         try {
             if (null == customer.getId()) {
+                if (StringUtils.isEmpty(customer.getPhoneNo()) ||
+                        StringUtils.isEmpty(customer.getEmail())) {
+                    throw new IllegalArgumentException("Phone Number and email cannot be empty!");
+
+                } else {
+                    Customer customerResultEntity = customerMapper.selectByPhoneNo(customer.getPhoneNo());
+                    if (customerResultEntity != null) {
+                        throw new IllegalStateException("Phone Number already exists!");
+                    }
+                    customerResultEntity = customerMapper.selectByEmail(customer.getEmail());
+                    if (customerResultEntity != null) {
+                        throw new IllegalStateException("Email already exists!");
+                    }
+                }
                 Long newId = customerMapper.insertSelective(customer);
                 customer.setId(newId);
             } else {

@@ -11,6 +11,12 @@ public interface CustomerMapper {
 
     Customer selectByPrimaryKey(Long id);
 
+    List<Customer> selectByProperties(Customer customer);
+
+    Customer selectByPhoneNo(String phoneNo);
+
+    Customer selectByEmail(String email);
+
     List<Customer> selectAll();
 
     Long insert(Customer customer);
