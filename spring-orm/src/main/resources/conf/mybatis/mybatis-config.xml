@@ -6,10 +6,14 @@
     <typeAliases>
         <typeAlias type="org.mliuframework.spring.orm.ibatis.bo.Customer" alias="Customer" />
         <typeAlias type="org.mliuframework.spring.orm.ibatis.bo.Address" alias="Address" />
+        <typeAlias type="org.mliuframework.spring.orm.ibatis.bo.Product" alias="Product" />
+        <typeAlias type="org.mliuframework.spring.orm.ibatis.bo.Order" alias="Order" />
     </typeAliases>
 
     <mappers>
         <mapper resource="mapper/CustomerMapper.xml"/>
         <mapper resource="mapper/AddressMapper.xml"/>
+        <mapper resource="mapper/ProductMapper.xml"/>
+        <mapper resource="mapper/OrderMapper.xml"/>
     </mappers>
 </configuration>

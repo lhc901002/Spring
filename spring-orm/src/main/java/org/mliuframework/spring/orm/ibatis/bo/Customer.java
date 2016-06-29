@@ -147,7 +147,7 @@ public class Customer {
     }
 
     /**
-     * create builder for address object
+     * create builder for customer object
      */
     public static class Builder {
 
