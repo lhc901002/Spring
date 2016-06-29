@@ -31,6 +31,45 @@
         where id = #{id, jdbcType=BIGINT}
     </select>
 
+    <select id="selectByCustomerId" resultMap="addressBaseResultMap" parameterType="Long">
+        select
+        <include refid="address_Base_Column_List"/>
+        from tb_address
+        where customer_id = #{customerId, jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByProperties" resultMap="addressBaseResultMap" parameterType="Address">
+        select
+        <include refid="address_Base_Column_List"/>
+        from tb_address
+        <where>
+            <if test="customerId != null">
+                `customer_id` = #{customerId, jdbcType=BIGINT}
+            </if>
+            <if test="country != null and country != ''">
+                AND `country` = #{country, jdbcType=VARCHAR}
+            </if>
+            <if test="province != null and province != ''">
+                AND `province` = #{province, jdbcType=VARCHAR}
+            </if>
+            <if test="city != null and city != ''">
+                AND `city` = #{city, jdbcType=VARCHAR}
+            </if>
+            <if test="street != null and street != ''">
+                AND `street` = #{street, jdbcType=VARCHAR}
+            </if>
+            <if test="zipCode != null and zipCode != ''">
+                AND `zip_code` = #{zipCode, jdbcType=VARCHAR}
+            </if>
+            <if test="type != null">
+                AND `address_type` = #{type, jdbcType=TINYINT}
+            </if>
+            <if test="status != null">
+                AND `status` = #{status, jdbcType=BOOLEAN}
+            </if>
+        </where>
+    </select>
+
     <select id="selectAll" resultMap="addressBaseResultMap">
         select
         <include refid="address_Base_Column_List"/>

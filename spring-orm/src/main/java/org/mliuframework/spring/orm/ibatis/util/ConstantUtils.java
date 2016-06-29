@@ -15,4 +15,8 @@ public class ConstantUtils {
 
     public static final String DEFAULT_DATETIME_PATTERN = "yyyy-MM-dd hh:mm:ss";
 
+    public static final Byte TYPE_ADDRESS_PERMANENT = 1;
+
+    public static final Byte TYPE_ADDRESS_MAIL = 2;
+
 }

@@ -13,10 +13,14 @@ public interface AddressMapper {
 
     List<Address> selectAll();
 
+    List<Address> selectByProperties(Address address);
+
+    List<Address> selectByCustomerId(Long customerId);
+
     void insert(Address address);
 
     void insertSelective(Address address);
 
-    void updateByPrimaryKeySelective(Address address);
+    int updateByPrimaryKeySelective(Address address);
 
 }

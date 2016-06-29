@@ -6,8 +6,11 @@ import org.mliuframework.spring.orm.ibatis.bo.Address;
 import org.mliuframework.spring.orm.ibatis.bo.Customer;
 import org.mliuframework.spring.orm.ibatis.mapper.AddressMapper;
 import org.mliuframework.spring.orm.ibatis.mapper.CustomerMapper;
+import org.mliuframework.spring.orm.ibatis.util.ConstantUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by Michael on 6/27/16.
@@ -24,22 +27,39 @@ public class AddressService {
     private CustomerMapper customerMapper;
 
     public Address saveOrUpdateSelective(Address address) throws Exception {
+        if (address == null) {
+            throw new IllegalArgumentException("Address is null!");
+        }
         try {
             if (null == address.getId()) {
-                if (null == address.getCustomerId()) {
-                    throw new IllegalArgumentException("Parameter should include addressId " +
-                            "or customerId!");
-                } else {
+                if (address.hasAllRequiredFields()) {
                     Customer customerResultEntity = customerMapper.
                             selectByPrimaryKey(address.getCustomerId());
                     if (null == customerResultEntity) {
                         throw new IllegalArgumentException("CustomerId does not exist!");
                     } else {
+                        if (ConstantUtils.TYPE_ADDRESS_PERMANENT == address.getType()) {
+                            Address addressQueryEntity = new Address.Builder().
+                                    setCustomerId(address.getCustomerId()).setType(
+                                    ConstantUtils.TYPE_ADDRESS_PERMANENT).setStatus(true).
+                                    build();
+                            List<Address> addressResultEntityList = addressMapper.
+                                    selectByProperties(addressQueryEntity);
+                            if (null != addressResultEntityList && !addressResultEntityList.isEmpty()) {
+                                throw new IllegalStateException("One customer can only have " +
+                                        "one permanent address!");
+                            }
+                        }
                         addressMapper.insertSelective(address);
                     }
+                } else {
+                    throw new IllegalArgumentException("Required fields missed for Address!");
                 }
             } else {
-                addressMapper.updateByPrimaryKeySelective(address);
+                int result = addressMapper.updateByPrimaryKeySelective(address);
+                if (result < 1) {
+                    throw new IllegalStateException("Address Id does not exist!");
+                }
             }
         } catch (Exception e) {
             log.error("saveOrUpdate throws exception: ", e);
