@@ -1,7 +1,6 @@
 package org.mliuframework.spring.orm.ibatis.controller;
 
 import com.alibaba.fastjson.JSON;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mliuframework.spring.orm.ibatis.bo.Address;
@@ -42,14 +41,6 @@ public class AddressController {
             Address addressEntity = addressService.saveOrUpdateSelective(address);
             AddressVo addressVo = new AddressVo();
             BeanUtils.copyProperties(addressEntity, addressVo);
-            if (null != addressEntity.getCreateTime()) {
-                addressVo.setCreateTime(DateFormatUtils.format(addressEntity.getCreateTime(),
-                        ConstantUtils.DEFAULT_DATETIME_PATTERN));
-            }
-            if (null != addressEntity.getUpdateTime()) {
-                addressVo.setUpdateTime(DateFormatUtils.format(addressEntity.getUpdateTime(),
-                        ConstantUtils.DEFAULT_DATETIME_PATTERN));
-            }
             rspVo.setAddress(addressVo);
             rspVo.setStatus(ConstantUtils.STATUS_SUCCESS);
             rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +

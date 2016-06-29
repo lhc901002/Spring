@@ -1,7 +1,6 @@
 package org.mliuframework.spring.orm.ibatis.controller;
 
 import com.alibaba.fastjson.JSON;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mliuframework.spring.orm.ibatis.bo.Customer;
@@ -39,14 +38,6 @@ public class CustomerController {
             Customer customerEntity = customerService.saveOrUpdateSelective(customer);
             CustomerVo customerVo = new CustomerVo();
             BeanUtils.copyProperties(customerEntity, customerVo);
-            if (null != customerEntity.getCreateTime()) {
-                customerVo.setCreateTime(DateFormatUtils.format(customerEntity.getCreateTime(),
-                        ConstantUtils.DEFAULT_DATETIME_PATTERN));
-            }
-            if (null != customerEntity.getUpdateTime()) {
-                customerVo.setUpdateTime(DateFormatUtils.format(customerEntity.getUpdateTime(),
-                        ConstantUtils.DEFAULT_DATETIME_PATTERN));
-            }
             rspVo.setCustomer(customerVo);
             rspVo.setStatus(ConstantUtils.STATUS_SUCCESS);
             rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
