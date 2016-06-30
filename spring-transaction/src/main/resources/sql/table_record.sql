@@ -1,0 +1,9 @@
+SET NAMES utf8;
+
+DROP TABLE IF EXISTS `record`;
+CREATE TABLE `record` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key',
+  `r_name` VARCHAR(20) NOT NULL DEFAULT '',
+  `balance` INT(10) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='record entity';

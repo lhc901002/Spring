@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.mliuframework.spring.orm</groupId>
-  <artifactId>mliu-spring-orm</artifactId>
+  <groupId>org.mliuframework.spring.transaction</groupId>
+  <artifactId>mliu-spring-transaction</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>mliu-spring-orm Maven Webapp</name>
+  <name>mliu-spring-transaction Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -72,19 +72,6 @@
       <version>${spring.version}</version>
     </dependency>
 
-    <!-- http://mvnrepository.com/artifact/org.mybatis/mybatis -->
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>3.4.0</version>
-    </dependency>
-    <!-- http://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis-spring</artifactId>
-      <version>1.3.0</version>
-    </dependency>
-
     <!-- AOP配置 -->
     <dependency>
       <groupId>org.aspectj</groupId>
@@ -120,13 +107,6 @@
       <version>1.2.17</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.21</version>
-    </dependency>
-
     <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -135,7 +115,8 @@
     </dependency>
 
   </dependencies>
+
   <build>
-    <finalName>mliu-spring-orm</finalName>
+    <finalName>mliu-spring-transaction</finalName>
   </build>
 </project>
