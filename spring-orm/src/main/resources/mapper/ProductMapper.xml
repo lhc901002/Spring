@@ -30,7 +30,7 @@
         select
         <include refid="product_Base_Column_List"/>
         from tb_product
-        where id = #{id, jdbcType=INTEGER}
+        where id = #{id, jdbcType=BIGINT}
     </select>
 
     <select id="selectByProperties" resultMap="productBaseResultMap" parameterType="Product">
@@ -116,7 +116,7 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
-                #{id, jdbcType=INTEGER},
+                #{id, jdbcType=BIGINT},
             </if>
             <if test="name != null">
                 #{name, jdbcType=VARCHAR},
@@ -197,7 +197,14 @@
                 update_time = #{updateTime, jdbcType=TIMESTAMP},
             </if>
         </set>
-        where id = #{id,jdbcType=BIGINT}
+        where id = #{id, jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByDecreaseBalance" parameterType="ProductFieldUpdateParam">
+        update tb_product
+        set balance = balance - #{balanceChange, jdbcType=INTEGER},
+            sales_volume = sales_volume + #{balanceChange, jdbcType=INTEGER}
+        where id = #{id, jdbcType=BIGINT} and balance > 0
     </update>
 
 </mapper>

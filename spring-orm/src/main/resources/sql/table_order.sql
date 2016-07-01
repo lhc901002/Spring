@@ -28,7 +28,7 @@ CREATE TABLE `tb_order` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT 'primary key',
   `customer_id` BIGINT(20) NOT NULL DEFAULT -1 COMMENT 'foreign key reference tb_customer.id',
   `address_id` BIGINT(20) NOT NULL DEFAULT -1 COMMENT 'foreign key reference tb_address.id',
-  `price` INT(10) NOT NULL DEFAULT -1 COMMENT 'unit: cent',
+  `total_price` INT(10) NOT NULL DEFAULT -1 COMMENT 'unit: cent',
   `prod_count` INT(10) NOT NULL DEFAULT 0 COMMENT 'number of products in the order',
   `status` TINYINT(2) NOT NULL DEFAULT 1 COMMENT '1 not paid, 2 paid, 3 delivered, 4 received, 5 canceled',
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

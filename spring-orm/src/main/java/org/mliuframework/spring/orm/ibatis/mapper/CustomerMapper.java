@@ -23,6 +23,6 @@ public interface CustomerMapper {
 
     void insertSelective(Customer customer);
 
-    void updateByPrimaryKeySelective(Customer customer);
+    int updateByPrimaryKeySelective(Customer customer);
 
 }

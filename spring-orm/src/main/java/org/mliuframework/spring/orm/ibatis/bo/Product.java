@@ -148,4 +148,128 @@ public class Product {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    public static class Builder {
+
+        private Long id;
+
+        private String name;
+
+        private String model;
+
+        private Byte type;
+
+        private String imageUrl;
+
+        private Integer price;
+
+        private Integer balance;
+
+        private Integer salesVolume;
+
+        private Integer commentCount;
+
+        private Integer collectCount;
+
+        private Integer popularity;
+
+        private Byte status;
+
+        private Date createTime;
+
+        private Date updateTime;
+
+        public Builder setId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setModel(String model) {
+            this.model = model;
+            return this;
+        }
+
+        public Builder setType(Byte type) {
+            this.type = type;
+            return this;
+        }
+
+        public Builder setImageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
+            return this;
+        }
+
+        public Builder setPrice(Integer price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder setBalance(Integer balance) {
+            this.balance = balance;
+            return this;
+        }
+
+        public Builder setSalesVolume(Integer salesVolume) {
+            this.salesVolume = salesVolume;
+            return this;
+        }
+
+        public Builder setCommentCount(Integer commentCount) {
+            this.commentCount = commentCount;
+            return this;
+        }
+
+        public Builder setCollectCount(Integer collectCount) {
+            this.collectCount = collectCount;
+            return this;
+        }
+
+        public Builder setPopularity(Integer popularity) {
+            this.popularity = popularity;
+            return this;
+        }
+
+        public Builder setStatus(Byte status) {
+            this.status = status;
+            return this;
+        }
+
+        public Builder setCreateTime(Date createTime) {
+            this.createTime = createTime;
+            return this;
+        }
+
+        public Builder setUpdateTime(Date updateTime) {
+            this.updateTime = updateTime;
+            return this;
+        }
+
+        public Product build() {
+            return new Product(this);
+        }
+
+    }
+
+    private Product(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.model = builder.model;
+        this.type = builder.type;
+        this.imageUrl = builder.imageUrl;
+        this.price = builder.price;
+        this.balance = builder.balance;
+        this.salesVolume = builder.salesVolume;
+        this.commentCount = builder.commentCount;
+        this.collectCount = builder.collectCount;
+        this.popularity = builder.popularity;
+        this.status = builder.status;
+        this.createTime = builder.createTime;
+        this.updateTime = builder.updateTime;
+    }
+
 }
