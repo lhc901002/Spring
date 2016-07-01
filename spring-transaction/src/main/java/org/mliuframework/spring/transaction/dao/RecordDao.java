@@ -3,9 +3,11 @@ package org.mliuframework.spring.transaction.dao;
 import org.mliuframework.spring.transaction.entity.Record;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * Created by Michael on 6/30/16.
@@ -18,24 +20,32 @@ public class RecordDao {
 
     public Record selectById(Long id) {
         String sql = "select id, r_name, balance from record where id = ?";
-        return jdbcTemplate.queryForObject(sql, new Object [] { id }, Record.class);
+        final Record record = new Record();
+        jdbcTemplate.query(sql, new Object[] {id}, new RowCallbackHandler() {
+            public void processRow(ResultSet rs) throws SQLException {
+                record.setBalance(rs.getInt("balance"));
+            }
+        });
+        return record;
     }
 
-    @Transactional(isolation = Isolation.READ_COMMITTED)
     public int insert(Record record) {
         String sql = "insert into record(r_name) values(?)";
         return jdbcTemplate.update(sql, record.getName());
     }
 
-    @Transactional(isolation = Isolation.READ_UNCOMMITTED)
-    public int updateByIncreasingBalance(Long id) {
+    public int updateByIncreaseBalance(Long id, Integer balance) {
+        String sql = "update record set balance = ? where id = ?";
+        return jdbcTemplate.update(sql, new Object [] { balance, id });
+    }
+
+    public int updateByAutoIncrease(Long id) {
         String sql = "update record set balance = balance + 1 where id = ?";
         return jdbcTemplate.update(sql, id);
     }
 
-    @Transactional(isolation = Isolation.READ_COMMITTED)
-    public int updateByDecreasingBalance(Long id) {
-        String sql = "update record set balance = balance - 1 where id = ?";
+    public int updateByAutoDecrease(Long id) {
+        String sql = "update record set balance = balance - 1 where id = ? and balance > 0";
         return jdbcTemplate.update(sql, id);
     }
 

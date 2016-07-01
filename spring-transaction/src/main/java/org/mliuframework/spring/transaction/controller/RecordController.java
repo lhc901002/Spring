@@ -1,6 +1,5 @@
 package org.mliuframework.spring.transaction.controller;
 
-import org.mliuframework.spring.transaction.entity.Record;
 import org.mliuframework.spring.transaction.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,12 +25,41 @@ public class RecordController {
     @ResponseBody
     public Integer increase(@RequestParam("id") Long id) {
         try {
-            recordService.saveOrUpdateById(new Record(id, ""));
+            synchronized (this) {
+                return recordService.updateByIncrease(id);
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            return -1;
+            return 0;
         }
-        return 0;
+    }
+
+    /**
+     * http://localhost:8080/orm/record/autoincrease?id=
+     */
+    @RequestMapping(value = "/autoincrease", method = RequestMethod.GET)
+    @ResponseBody
+    public Integer autoincrease(@RequestParam("id") Long id) {
+        try {
+            return recordService.updateByAutoIncrease(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    /**
+     * http://localhost:8080/orm/record/autodecrease?id=
+     */
+    @RequestMapping(value = "/autodecrease", method = RequestMethod.GET)
+    @ResponseBody
+    public Integer autodecrease(@RequestParam("id") Long id) {
+        try {
+            return recordService.updateByAutoDecrease(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
 }
