@@ -2,7 +2,10 @@ package org.mliuframework.spring.transaction.controller;
 
 import org.mliuframework.spring.transaction.entity.Record;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by Michael on 6/30/16.
