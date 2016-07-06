@@ -1,6 +1,6 @@
 package org.mliuframework.spring.orm.ibatis.mapper;
 
-import org.mliuframework.spring.orm.ibatis.bo.Address;
+import org.mliuframework.spring.orm.ibatis.entity.Address;
 
 import java.util.List;
 

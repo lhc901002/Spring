@@ -1,4 +1,4 @@
-package org.mliuframework.spring.orm.ibatis.bo;
+package org.mliuframework.spring.orm.ibatis.entity;
 
 import com.alibaba.fastjson.JSON;
 

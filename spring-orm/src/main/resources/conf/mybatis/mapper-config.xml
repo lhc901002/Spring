@@ -6,28 +6,8 @@
 
     <import resource="classpath:conf/mybatis/applicationContext-mybatis.xml" />
 
-    <bean id="customerMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.CustomerMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-    </bean>
-
-    <bean id="addressMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.AddressMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-    </bean>
-
-    <bean id="productMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.ProductMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-    </bean>
-
-    <bean id="orderMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.OrderMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-    </bean>
-
-    <bean id="orderProductMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.OrderProductMapper" />
+    <bean id="studentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.StudentMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 

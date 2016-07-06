@@ -1,6 +1,6 @@
 package org.mliuframework.spring.orm.ibatis.mapper;
 
-import org.mliuframework.spring.orm.ibatis.bo.OrderProduct;
+import org.mliuframework.spring.orm.ibatis.entity.OrderProduct;
 
 import java.util.List;
 

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.mliuframework.spring.orm.ibatis.mapper.StudentMapper">
+
+    <resultMap id="studentBaseResultMap" type="Student">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="s_name" property="name" jdbcType="VARCHAR"/>
+        <result column="s_age" property="createTime" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="student_Base_Column_List">
+        id, s_name, s_age
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="studentBaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="student_Base_Column_List"/>
+        from tb_student
+        where id = #{id, jdbcType=BIGINT}
+    </select>
+
+    <select id="selectAll" resultMap="userBaseResultMap">
+        select
+        <include refid="student_Base_Column_List"/>
+        from tb_student
+    </select>
+
+    <select id="selectByProperties" resultMap="userBaseResultMap" parameterType="Student">
+        select
+        <include refid="student_Base_Column_List"/>
+        from tb_student
+        <where>
+            <if test="id != null">
+                `id` = #{id, jdbcType=BIGINT}
+            </if>
+            <if test="name != null and name != ''">
+                AND `s_name` = #{name, jdbcType=VARCHAR}
+            </if>
+            <if test="age != null">
+                AND `s_age` = #{age, jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectUserListInUser" resultMap="userBaseResultMap" parameterType="java.util.List">
+        select
+        <include refid="user_Base_Column_List"/>
+        from user
+        WHERE uid IN
+        <foreach item="user" index="index" collection="userList" open="(" separator="," close=")">
+            #{user.id, jdbcType=BIGINT}
+        </foreach>
+    </select>
+
+
+    <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        insert into user (uid, uname, create_time, profile)
+        values (#{id, jdbcType=INTEGER}, #{name, jdbcType=VARCHAR},
+                #{createTime, jdbcType=TIMESTAMP}, #{profile, jdbcType=BLOB})
+        ]]>
+    </insert>
+
+    <insert id="insertSelective" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                uid,
+            </if>
+            <if test="name != null">
+                uname,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="profile != null">
+                profile,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id, jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name, jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="profile != null">
+                #{profile, jdbcType=BLOB},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

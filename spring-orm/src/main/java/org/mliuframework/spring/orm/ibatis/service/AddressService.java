@@ -2,8 +2,8 @@ package org.mliuframework.spring.orm.ibatis.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.mliuframework.spring.orm.ibatis.bo.Address;
-import org.mliuframework.spring.orm.ibatis.bo.Customer;
+import org.mliuframework.spring.orm.ibatis.entity.Address;
+import org.mliuframework.spring.orm.ibatis.entity.Customer;
 import org.mliuframework.spring.orm.ibatis.mapper.AddressMapper;
 import org.mliuframework.spring.orm.ibatis.mapper.CustomerMapper;
 import org.mliuframework.spring.orm.ibatis.util.ConstantUtils;
