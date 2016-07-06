@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+        <typeAlias type="org.mliuframework.spring.demo.onlineshopping.entity.Customer" alias="Customer" />
+        <typeAlias type="org.mliuframework.spring.demo.onlineshopping.entity.Address" alias="Address" />
+        <typeAlias type="org.mliuframework.spring.demo.onlineshopping.entity.Product" alias="Product" />
+        <typeAlias type="org.mliuframework.spring.demo.onlineshopping.entity.Order" alias="Order" />
+        <typeAlias type="org.mliuframework.spring.demo.onlineshopping.entity.OrderProduct" alias="OrderProduct" />
+        <typeAlias type="org.mliuframework.spring.demo.onlineshopping.vo.ProductFieldUpdateParam"
+                   alias="ProductFieldUpdateParam" />
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="mapper/CustomerMapper.xml"/>
+        <mapper resource="mapper/AddressMapper.xml"/>
+        <mapper resource="mapper/ProductMapper.xml"/>
+        <mapper resource="mapper/OrderMapper.xml"/>
+        <mapper resource="mapper/OrderProductMapper.xml"/>
+    </mappers>
+</configuration>

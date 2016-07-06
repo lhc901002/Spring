@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.mliuframework.spring.demo.onlineshopping.dao.CustomerMapper">
+
+    <resultMap id="customerBaseResultMap" type="Customer">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR"/>
+        <result column="sur_name" property="surName" jdbcType="VARCHAR"/>
+        <result column="given_name" property="givenName" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" jdbcType="TINYINT"/>
+        <result column="phone_no" property="phoneNo" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="head_image_url" property="headImageUrl" jdbcType="VARCHAR"/>
+        <result column="star_level" property="starLevel" jdbcType="INTEGER"/>
+        <result column="score" property="score" jdbcType="INTEGER"/>
+        <result column="details" property="details" javaType="_byte[]" jdbcType="BLOB"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="customer_Base_Column_List">
+        id, nick_name, sur_name, given_name, gender, phone_no,
+        email, head_image_url, star_level, score, create_time, update_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="customerBaseResultMap" parameterType="Long">
+        select
+        <include refid="customer_Base_Column_List"/>
+        from tb_customer
+        where id = #{id, jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByProperties" resultMap="customerBaseResultMap" parameterType="Customer">
+        select
+        <include refid="customer_Base_Column_List"/>
+        from tb_customer
+        <where>
+            <if test="nickName != null and nickName != ''">
+                `nick_name` = #{nickName, jdbcType=VARCHAR}
+            </if>
+            <if test="surName != null and surName != ''">
+                AND `sur_name` = #{surName, jdbcType=VARCHAR}
+            </if>
+            <if test="givenName != null and givenName != ''">
+                AND `given_name` = #{givenName, jdbcType=VARCHAR}
+            </if>
+            <if test="gender != null">
+                AND `gender` = #{gender, jdbcType=TINYINT}
+            </if>
+            <if test="phoneNo != null and phoneNo != ''">
+                AND `phone_no` = #{phoneNo, jdbcType=VARCHAR}
+            </if>
+            <if test="email != null and email != ''">
+                AND `email` = #{email, jdbcType=VARCHAR}
+            </if>
+            <if test="headImageUrl != null and headImageUrl != ''">
+                AND `head_image_url` = #{headImageUrl, jdbcType=VARCHAR}
+            </if>
+            <if test="starLevel != null">
+                AND `star_level` = #{starLevel, jdbcType=INTEGER}
+            </if>
+            <if test="score != null">
+                AND `score` = #{score, jdbcType=INTEGER}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByPhoneNo" resultMap="customerBaseResultMap" parameterType="String">
+        select
+        <include refid="customer_Base_Column_List"/>
+        from tb_customer
+        WHERE phone_no = #{phoneNo, jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByEmail" resultMap="customerBaseResultMap" parameterType="String">
+        select
+        <include refid="customer_Base_Column_List"/>
+        from tb_customer
+        WHERE email = #{email, jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectAll" resultMap="customerBaseResultMap">
+        select
+        <include refid="customer_Base_Column_List"/>
+        from tb_customer
+    </select>
+
+    <insert id="insert" parameterType="Customer" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        insert into tb_customer (id, nick_name, sur_name, given_name, gender, phone_no,
+        email, head_image_url, star_level, score, details, create_time, update_time)
+        values (#{id, jdbcType=BIGINT}, #{nickName, jdbcType=VARCHAR},
+                #{surName, jdbcType=VARCHAR}, #{givenName, jdbcType=VARCHAR},
+                #{gender, jdbcType=TINYINT}, #{phoneNo, jdbcType=VARCHAR},
+                #{email, jdbcType=VARCHAR}, #{headImageUrl, jdbcType=VARCHAR},
+                #{starLevel, jdbcType=INTEGER}, #{score, jdbcType=INTEGER},
+                #{details, jdbcType=BLOB}, #{createTime, jdbcType=TIMESTAMP},
+                #{updateTime, jdbcType=TIMESTAMP})
+        ]]>
+    </insert>
+
+    <insert id="insertSelective" parameterType="Customer" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_customer
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="nickName != null">
+                nick_name,
+            </if>
+            <if test="surName != null">
+                sur_name,
+            </if>
+            <if test="givenName != null">
+                given_name,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="phoneNo != null">
+                phone_no,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="headImageUrl != null">
+                head_image_url,
+            </if>
+            <if test="starLevel != null">
+                star_level,
+            </if>
+            <if test="score != null">
+                score,
+            </if>
+            <if test="details != null">
+                details,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id, jdbcType=BIGINT},
+            </if>
+            <if test="nickName != null">
+                #{nickName, jdbcType=VARCHAR},
+            </if>
+            <if test="surName != null">
+                #{surName, jdbcType=VARCHAR},
+            </if>
+            <if test="givenName != null">
+                #{givenName, jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender, jdbcType=TINYINT},
+            </if>
+            <if test="phoneNo != null">
+                #{phoneNo, jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email, jdbcType=VARCHAR},
+            </if>
+            <if test="headImageUrl != null">
+                #{headImageUrl, jdbcType=VARCHAR},
+            </if>
+            <if test="starLevel != null">
+                #{starLevel, jdbcType=INTEGER},
+            </if>
+            <if test="score != null">
+                #{score, jdbcType=INTEGER},
+            </if>
+            <if test="details != null">
+                #{details, jdbcType=BLOB},
+            </if>
+            <if test="createTime != null">
+                #{createTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime, jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="Customer">
+        update tb_customer
+        <set>
+            <if test="nickName != null">
+                nick_name = #{nickName, jdbcType=VARCHAR},
+            </if>
+            <if test="surName != null">
+                sur_name = #{surName, jdbcType=VARCHAR},
+            </if>
+            <if test="givenName != null">
+                given_name = #{givenName, jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender, jdbcType=TINYINT},
+            </if>
+            <if test="phoneNo != null">
+                phone_no = #{phoneNo, jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email, jdbcType=VARCHAR},
+            </if>
+            <if test="headImageUrl != null">
+                head_image_url = #{headImageUrl, jdbcType=VARCHAR},
+            </if>
+            <if test="starLevel != null">
+                star_level = #{starLevel, jdbcType=INTEGER},
+            </if>
+            <if test="score != null">
+                score = #{score, jdbcType=INTEGER},
+            </if>
+            <if test="details != null">
+                details = #{details, jdbcType=BLOB},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime, jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime, jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+</mapper>
