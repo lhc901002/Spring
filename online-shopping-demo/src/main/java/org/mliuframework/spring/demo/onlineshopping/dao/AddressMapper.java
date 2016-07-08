@@ -17,9 +17,9 @@ public interface AddressMapper {
 
     List<Address> selectByCustomerId(Long customerId);
 
-    void insert(Address address);
+    int insert(Address address);
 
-    void insertSelective(Address address);
+    int insertSelective(Address address);
 
     int updateByPrimaryKeySelective(Address address);
 
