@@ -103,7 +103,7 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="Address">
+    <update id="updateByPrimaryKeySelective" parameterType="Student">
         update tb_student
         <set>
             <if test="name != null">
