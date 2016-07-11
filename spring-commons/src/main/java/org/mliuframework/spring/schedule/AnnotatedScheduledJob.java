@@ -3,12 +3,11 @@ package org.mliuframework.spring.schedule;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by Michael on 7/4/16.
  */
-@Component
+//@Component
 public class AnnotatedScheduledJob {
 
     private static final Log log = LogFactory.getLog(AnnotatedScheduledJob.class);
