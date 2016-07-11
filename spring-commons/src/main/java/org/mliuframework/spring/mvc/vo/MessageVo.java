@@ -9,8 +9,7 @@ public class MessageVo {
 
     private String statusInfo;
 
-    public MessageVo() {
-    }
+    public MessageVo() {}
 
     public MessageVo(Integer status, String statusInfo) {
         this.status = status;
