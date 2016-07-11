@@ -1,4 +1,4 @@
-package org.mliuframework.spring.task.service;
+package org.mliuframework.spring.schedule;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
