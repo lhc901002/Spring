@@ -4,7 +4,7 @@
 
 <configuration>
     <typeAliases>
-        <typeAlias type="org.mliuframework.spring.orm.ibatis.entity.Student" alias="Student" />
+        <typeAlias type="org.mliuframework.spring.orm.commons.entity.Student" alias="Student" />
     </typeAliases>
 
     <mappers>

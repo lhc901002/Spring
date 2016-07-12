@@ -5,6 +5,6 @@
 </head>
 
 <body>
-<h1>File Upload Fail!</h1>
+    <h1>File Upload Fail!</h1>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package org.mliuframework.spring.orm.ibatis.vo;
+package org.mliuframework.spring.orm.commons.vo;
 
 import org.apache.commons.lang3.StringUtils;
 

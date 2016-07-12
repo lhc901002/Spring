@@ -1,4 +1,4 @@
-package org.mliuframework.spring.orm.ibatis.util;
+package org.mliuframework.spring.orm.commons.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;

@@ -1,4 +1,4 @@
-package org.mliuframework.spring.orm.ibatis.util;
+package org.mliuframework.spring.orm.commons.util;
 
 /**
  * Created by Michael on 6/28/16.

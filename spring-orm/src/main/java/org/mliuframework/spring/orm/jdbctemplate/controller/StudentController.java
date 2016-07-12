@@ -1,4 +1,4 @@
-package org.mliuframework.spring.orm.ibatis.controller;
+package org.mliuframework.spring.orm.jdbctemplate.controller;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.logging.Log;
@@ -8,7 +8,7 @@ import org.mliuframework.spring.orm.commons.util.ConstantUtils;
 import org.mliuframework.spring.orm.commons.util.PropertyUtils;
 import org.mliuframework.spring.orm.commons.vo.RspStudentVo;
 import org.mliuframework.spring.orm.commons.vo.StudentVo;
-import org.mliuframework.spring.orm.ibatis.service.StudentService;
+import org.mliuframework.spring.orm.jdbctemplate.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,17 +20,17 @@ import javax.annotation.Resource;
 /**
  * Created by Michael on 7/11/16.
  */
-@Controller("studentMyBatisController")
-@RequestMapping("/ibatis/student")
+@Controller("studentJDBCTemplateController")
+@RequestMapping("/jdbctemplate/student")
 public class StudentController {
 
     private static final Log log = LogFactory.getLog(StudentController.class);
 
-    @Resource(name = "studentMyBatisService")
+    @Resource(name = "studentJDBCTemplateService")
     private StudentService studentService;
 
     /**
-     * http://localhost:8080/orm/ibatis/student/save
+     * http://localhost:8080/orm/jdbctemplate/student/save
      */
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
@@ -38,26 +38,17 @@ public class StudentController {
         log.info("doSave student receive: " + JSON.toJSONString(studentVo));
         RspStudentVo rspVo = new RspStudentVo();
         try {
-            boolean failFlag = false;
             if (studentVo == null || !studentVo.containAllRequiredField()) {
-                failFlag = true;
-            } else {
-                Student student = new Student.Builder().setId(studentVo.getId()).
-                        setName(studentVo.getName()).setAge(studentVo.getAge()).build();
-                Student studentEntity = studentService.saveOrUpdateSelective(student);
-                if (null == studentEntity) {
-                    failFlag = true;
-                } else {
-                    rspVo.setStatus(ConstantUtils.STATUS_SUCCESS);
-                    rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
-                            ConstantUtils.STATUS_SUCCESS));
-                    rspVo.setStudent(studentEntity);
-                }
-            }
-            if (failFlag) {
                 rspVo.setStatus(ConstantUtils.STATUS_FAIL);
                 rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
                         ConstantUtils.STATUS_FAIL));
+            } else {
+                Student student = new Student.Builder().setId(studentVo.getId()).
+                        setName(studentVo.getName()).setAge(studentVo.getAge()).build();
+                studentService.saveOrUpdate(student);
+                rspVo.setStatus(ConstantUtils.STATUS_SUCCESS);
+                rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                        ConstantUtils.STATUS_SUCCESS));
             }
         } catch (Exception e) {
             log.error("doSave student throws exception: " + e);

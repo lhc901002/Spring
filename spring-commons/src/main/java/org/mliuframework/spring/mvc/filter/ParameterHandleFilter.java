@@ -24,6 +24,9 @@ public class ParameterHandleFilter implements Filter {
                 servletRequest.getRequestDispatcher("/WEB-INF/views/filter/error.jsp")
                         .forward(servletRequest, servletResponse);
             }
+            if (param.equals("ok")) {
+                servletRequest.setAttribute("isok", "that is ok");
+            }
             filterChain.doFilter(servletRequest, servletResponse);
         } catch (Exception ex) {
             servletRequest.setAttribute("errorMessage", ex);

@@ -1,4 +1,4 @@
-package org.mliuframework.spring.orm.ibatis.vo;
+package org.mliuframework.spring.orm.commons.vo;
 
 /**
  * Created by Michael on 6/28/16.

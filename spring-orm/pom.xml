@@ -15,13 +15,6 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-
     <!-- spring核心功能 -->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -58,11 +51,17 @@
       <version>${mysql.version}</version>
     </dependency>
 
-    <!-- 数据库连接池 -->
+    <!-- 数据库连接池dbcp -->
     <dependency>
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
       <version>1.4</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+    <dependency>
+      <groupId>com.mchange</groupId>
+      <artifactId>c3p0</artifactId>
+      <version>0.9.5.2</version>
     </dependency>
 
     <!-- ORM(使用hibernate, JPA, MyBatis等) -->
@@ -134,6 +133,12 @@
       <version>3.4</version>
     </dependency>
 
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <finalName>mliu-spring-orm</finalName>

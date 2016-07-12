@@ -1,4 +1,4 @@
-package org.mliuframework.spring.orm.ibatis.entity;
+package org.mliuframework.spring.orm.commons.entity;
 
 /**
  * Created by Michael on 7/5/16.
