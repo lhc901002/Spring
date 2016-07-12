@@ -1,14 +1,18 @@
 package org.mliuframework.spring.orm.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.mliuframework.spring.orm.dao.StudentHibernateDao;
 import org.mliuframework.spring.orm.dao.StudentJDBCTemplateDao;
-import org.mliuframework.spring.orm.dao.StudentJPADao;
 import org.mliuframework.spring.orm.dao.StudentMapper;
 import org.mliuframework.spring.orm.entity.Student;
+import org.mliuframework.spring.orm.vo.StudentVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by Michael on 7/8/16.
@@ -22,13 +26,7 @@ public class StudentService {
     private StudentMapper studentMapper;
 
     @Autowired
-    private StudentHibernateDao studentHibernateDao;
-
-    @Autowired
     private StudentJDBCTemplateDao studentJDBCTemplateDao;
-
-    @Autowired
-    private StudentJPADao studentJPADao;
 
     public Student saveOrUpdateSelectiveUsingMybatis(Student student) throws Exception {
         log.info("saveOrUpdateSelective receives parameter: " + student);
@@ -74,6 +72,14 @@ public class StudentService {
             log.error("saveOrUpdateSelective exception: " + e);
             throw e;
         }
+    }
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public List<StudentVo> findByName(String name) {
+        if (StringUtils.isEmpty(name)) {
+            throw new IllegalArgumentException("Student's name is empty!");
+        }
+        return studentMapper.selectByName(name);
     }
 
 }

@@ -4,12 +4,12 @@
 
 <mapper namespace="org.mliuframework.spring.orm.dao.StudentMapper">
 
-    <resultMap id="studentBaseResultMap" type="Student">
+    <resultMap id="studentBaseResultMap" type="StudentVo">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="s_name" property="name" jdbcType="VARCHAR"/>
         <result column="s_age" property="age" jdbcType="INTEGER"/>
-        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
-        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="create_time" property="createTime" javaType="String" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" javaType="String" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="student_Base_Column_List">
@@ -44,6 +44,13 @@
                 AND s_age = #{age, jdbcType=INTEGER}
             </if>
         </where>
+    </select>
+
+    <select id="selectByName" resultMap="studentBaseResultMap" parameterType="String">
+        select
+        <include refid="student_Base_Column_List"/>
+        from tb_student
+        where s_name like "%"#{name, jdbcType=VARCHAR}"%"
     </select>
 
     <select id="selectByIdList" resultMap="studentBaseResultMap" parameterType="java.util.List">

@@ -5,7 +5,12 @@
 <configuration>
     <typeAliases>
         <typeAlias type="org.mliuframework.spring.orm.entity.Student" alias="Student" />
+        <typeAlias type="org.mliuframework.spring.orm.vo.StudentVo" alias="StudentVo" />
     </typeAliases>
+
+    <typeHandlers>
+        <typeHandler javaType="String" jdbcType="TIMESTAMP" handler="org.mliuframework.spring.orm.handler.DateTypeHandler" />
+    </typeHandlers>
 
     <mappers>
         <mapper resource="mapper/StudentMapper.xml"/>

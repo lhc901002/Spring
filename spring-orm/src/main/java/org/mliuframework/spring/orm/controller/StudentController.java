@@ -7,6 +7,7 @@ import org.mliuframework.spring.orm.entity.Student;
 import org.mliuframework.spring.orm.service.StudentService;
 import org.mliuframework.spring.orm.util.ConstantUtils;
 import org.mliuframework.spring.orm.util.PropertyUtils;
+import org.mliuframework.spring.orm.vo.RspStudentListVo;
 import org.mliuframework.spring.orm.vo.RspStudentVo;
 import org.mliuframework.spring.orm.vo.StudentVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * Created by Michael on 7/11/16.
@@ -34,7 +37,7 @@ public class StudentController {
     @RequestMapping(value = "/mybatis/save", method = RequestMethod.POST)
     @ResponseBody
     public RspStudentVo doSaveByMybatis(@RequestBody StudentVo studentVo) {
-        log.info("doSave student receive: " + JSON.toJSONString(studentVo));
+        log.info("doSave student receives: " + JSON.toJSONString(studentVo));
         RspStudentVo rspVo = new RspStudentVo();
         try {
             boolean failFlag = false;
@@ -47,10 +50,11 @@ public class StudentController {
                 if (null == studentEntity) {
                     failFlag = true;
                 } else {
+                    studentVo.setId(studentEntity.getId());
                     rspVo.setStatus(ConstantUtils.STATUS_SUCCESS);
                     rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
                             ConstantUtils.STATUS_SUCCESS));
-                    rspVo.setStudent(studentEntity);
+                    rspVo.setStudent(studentVo);
                 }
             }
             if (failFlag) {
@@ -64,7 +68,7 @@ public class StudentController {
             rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
                     ConstantUtils.STATUS_EXCEPTION) + ": " + e);
         }
-        log.info("doSave customer return: " + JSON.toJSONString(rspVo));
+        log.info("doSave customer returns: " + JSON.toJSONString(rspVo));
         return rspVo;
     }
 
@@ -74,7 +78,7 @@ public class StudentController {
     @RequestMapping(value = "/jdbctemplate/save", method = RequestMethod.POST)
     @ResponseBody
     public RspStudentVo doSaveByJDBCTemplate(@RequestBody StudentVo studentVo) {
-        log.info("doSave student receive: " + JSON.toJSONString(studentVo));
+        log.info("doSave student receives: " + JSON.toJSONString(studentVo));
         RspStudentVo rspVo = new RspStudentVo();
         try {
             if (studentVo == null || !studentVo.containAllRequiredField()) {
@@ -95,7 +99,37 @@ public class StudentController {
             rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
                     ConstantUtils.STATUS_EXCEPTION) + ": " + e);
         }
-        log.info("doSave customer return: " + JSON.toJSONString(rspVo));
+        log.info("doSave customer returns: " + JSON.toJSONString(rspVo));
+        return rspVo;
+    }
+
+    /**
+     * http://localhost:8080/orm/student/findbyname
+     */
+    @RequestMapping(value = "/findbyname", method = RequestMethod.POST)
+    @ResponseBody
+    public RspStudentListVo findByName(@RequestBody StudentVo studentVo) {
+        log.info("findByName receives: " + JSON.toJSONString(studentVo));
+        RspStudentListVo rspVo = new RspStudentListVo();
+        try {
+            if (studentVo == null || !studentVo.containAllRequiredField()) {
+                rspVo.setStatus(ConstantUtils.STATUS_FAIL);
+                rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                        ConstantUtils.STATUS_FAIL));
+            } else {
+                List<StudentVo> studentList = studentService.findByName(studentVo.getName());
+                rspVo.setStatus(ConstantUtils.STATUS_SUCCESS);
+                rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                        ConstantUtils.STATUS_SUCCESS));
+                rspVo.setStudentList(studentList);
+            }
+        } catch (Exception e) {
+            log.error("findByName throws exception: " + e);
+            rspVo.setStatus(ConstantUtils.STATUS_EXCEPTION);
+            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                    ConstantUtils.STATUS_EXCEPTION) + ": " + e);
+        }
+        log.info("findByName returns: " + JSON.toJSONString(rspVo));
         return rspVo;
     }
 

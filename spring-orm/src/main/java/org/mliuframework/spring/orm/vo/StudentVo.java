@@ -17,6 +17,9 @@ public class StudentVo {
 
     private String updateTime;
 
+    public StudentVo() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -60,6 +63,57 @@ public class StudentVo {
     public boolean containAllRequiredField() {
         return null != id || StringUtils.isNotEmpty(name) || null != age ||
                 StringUtils.isNotEmpty(createTime) || StringUtils.isNotEmpty(updateTime);
+    }
+
+    public static class Builder {
+
+        private Long id;
+
+        private String name;
+
+        private Integer age;
+
+        private String createTime;
+
+        private String updateTime;
+
+        public Builder setId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setAge(Integer age) {
+            this.age = age;
+            return this;
+        }
+
+        public Builder setCreateTime(String createTime) {
+            this.createTime = createTime;
+            return this;
+        }
+
+        public Builder setUpdateTime(String updateTime) {
+            this.updateTime = updateTime;
+            return this;
+        }
+
+        public StudentVo build() {
+            return new StudentVo(this);
+        }
+
+    }
+
+    private StudentVo(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.age = builder.age;
+        this.createTime = builder.createTime;
+        this.updateTime = builder.updateTime;
     }
 
 }

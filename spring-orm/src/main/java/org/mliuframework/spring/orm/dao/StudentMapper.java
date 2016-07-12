@@ -1,6 +1,7 @@
 package org.mliuframework.spring.orm.dao;
 
 import org.mliuframework.spring.orm.entity.Student;
+import org.mliuframework.spring.orm.vo.StudentVo;
 
 import java.util.List;
 
@@ -9,11 +10,15 @@ import java.util.List;
  */
 public interface StudentMapper {
 
-    Student selectByPrimaryKey(Long id);
+    StudentVo selectByPrimaryKey(Long id);
 
-    List<Student> selectAll();
+    List<StudentVo> selectAll();
 
-    List<Student> selectByProperties(Student student);
+    List<StudentVo> selectByProperties(Student student);
+
+    List<StudentVo> selectByName(String name);
+
+    List<StudentVo> selectByIdList(List<Long> idList);
 
     int insert(Student student);
 

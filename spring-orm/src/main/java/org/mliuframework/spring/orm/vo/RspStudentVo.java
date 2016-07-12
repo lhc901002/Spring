@@ -1,13 +1,11 @@
 package org.mliuframework.spring.orm.vo;
 
-import org.mliuframework.spring.orm.entity.Student;
-
 /**
  * Created by Michael on 7/11/16.
  */
 public class RspStudentVo extends RspVo {
 
-    private Student student;
+    private StudentVo student;
 
     public RspStudentVo() {}
 
@@ -15,11 +13,11 @@ public class RspStudentVo extends RspVo {
         super(status, statusInfo);
     }
 
-    public Student getStudent() {
+    public StudentVo getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(StudentVo student) {
         this.student = student;
     }
 
