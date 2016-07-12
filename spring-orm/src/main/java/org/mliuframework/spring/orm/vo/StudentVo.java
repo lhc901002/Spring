@@ -1,4 +1,4 @@
-package org.mliuframework.spring.orm.commons.vo;
+package org.mliuframework.spring.orm.vo;
 
 import org.apache.commons.lang3.StringUtils;
 

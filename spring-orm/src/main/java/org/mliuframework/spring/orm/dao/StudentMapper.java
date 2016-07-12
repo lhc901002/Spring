@@ -1,6 +1,6 @@
-package org.mliuframework.spring.orm.ibatis.mapper;
+package org.mliuframework.spring.orm.dao;
 
-import org.mliuframework.spring.orm.commons.entity.Student;
+import org.mliuframework.spring.orm.entity.Student;
 
 import java.util.List;
 

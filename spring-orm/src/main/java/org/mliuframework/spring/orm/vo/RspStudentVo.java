@@ -1,6 +1,6 @@
-package org.mliuframework.spring.orm.commons.vo;
+package org.mliuframework.spring.orm.vo;
 
-import org.mliuframework.spring.orm.commons.entity.Student;
+import org.mliuframework.spring.orm.entity.Student;
 
 /**
  * Created by Michael on 7/11/16.

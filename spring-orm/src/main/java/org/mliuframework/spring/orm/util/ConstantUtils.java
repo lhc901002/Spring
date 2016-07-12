@@ -1,4 +1,4 @@
-package org.mliuframework.spring.orm.commons.util;
+package org.mliuframework.spring.orm.util;
 
 /**
  * Created by Michael on 6/28/16.

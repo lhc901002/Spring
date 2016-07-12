@@ -1,8 +1,8 @@
-package org.mliuframework.spring.orm.jdbctemplate.dao;
+package org.mliuframework.spring.orm.dao;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.mliuframework.spring.orm.commons.entity.Student;
+import org.mliuframework.spring.orm.entity.Student;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -11,10 +11,10 @@ import javax.annotation.Resource;
 /**
  * Created by Michael on 7/12/16.
  */
-@Repository("studentJDBCTemplateDao")
-public class StudentDao {
+@Repository
+public class StudentJDBCTemplateDao {
 
-    private static final Log log = LogFactory.getLog(StudentDao.class);
+    private static final Log log = LogFactory.getLog(StudentJDBCTemplateDao.class);
 
     @Resource(name = "jdbcTemplate")
     private JdbcTemplate jdbcTemplate;

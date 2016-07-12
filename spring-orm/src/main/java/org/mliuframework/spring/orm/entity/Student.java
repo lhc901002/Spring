@@ -1,4 +1,4 @@
-package org.mliuframework.spring.orm.commons.entity;
+package org.mliuframework.spring.orm.entity;
 
 import java.util.Date;
 

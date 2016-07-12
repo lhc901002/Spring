@@ -7,7 +7,7 @@
     <import resource="classpath:conf/mybatis/applicationContext-mybatis.xml" />
 
     <bean id="studentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.mliuframework.spring.orm.ibatis.mapper.StudentMapper" />
+        <property name="mapperInterface" value="org.mliuframework.spring.orm.dao.StudentMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 

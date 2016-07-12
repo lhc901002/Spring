@@ -7,9 +7,8 @@
 					       http://www.springframework.org/schema/beans
 					       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <context:component-scan base-package="org.mliuframework.spring.orm.ibatis.service" />
-	<context:component-scan base-package="org.mliuframework.spring.orm.jdbctemplate.service" />
-	<context:component-scan base-package="org.mliuframework.spring.orm.jdbctemplate.dao" />
+    <context:component-scan base-package="org.mliuframework.spring.orm.service" />
+	<context:component-scan base-package="org.mliuframework.spring.orm.dao" />
 
 	<import resource="classpath:conf/mybatis/mapper-config.xml" />
 	<import resource="classpath:conf/jdbctemplate/applicationContext-jdbctemplate.xml" />
