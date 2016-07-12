@@ -10,6 +10,7 @@
 
   <properties>
     <spring.version>4.3.0.RELEASE</spring.version>
+    <hibernate.version>5.2.1.Final</hibernate.version>
     <mysql.version>5.1.39</mysql.version>
     <aspectjweaver.version>1.8.9</aspectjweaver.version>
   </properties>
@@ -84,6 +85,13 @@
       <version>1.3.0</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernate.version}</version>
+    </dependency>
+
     <!-- AOP配置 -->
     <dependency>
       <groupId>org.aspectj</groupId>
@@ -140,6 +148,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
   <build>
     <finalName>mliu-spring-orm</finalName>
   </build>

@@ -13,7 +13,7 @@
 					       http://www.springframework.org/schema/tx
 	   					   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:property-placeholder location="classpath:jdbc-mysql.properties" ignore-unresolvable="true" />
+    <context:property-placeholder location="classpath:persistence-mysql.properties" ignore-unresolvable="true" />
 
     <!-- Spring内置连接池 -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
