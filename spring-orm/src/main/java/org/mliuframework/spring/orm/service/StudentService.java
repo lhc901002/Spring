@@ -1,8 +1,11 @@
 package org.mliuframework.spring.orm.service;
 
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.mliuframework.spring.orm.dao.StudentDao;
 import org.mliuframework.spring.orm.dao.StudentJDBCTemplateDao;
 import org.mliuframework.spring.orm.dao.StudentMapper;
 import org.mliuframework.spring.orm.entity.Student;
@@ -25,6 +28,9 @@ public class StudentService {
 
     @Autowired
     private StudentMapper studentMapper;
+
+    @Autowired
+    private StudentDao studentDao;
 
     @Autowired
     private StudentJDBCTemplateDao studentJDBCTemplateDao;
@@ -92,6 +98,23 @@ public class StudentService {
         return studentMapper.selectByName(name);
     }
 
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public PageList findPageList(Integer page, Integer pageSize) {
+        PageBounds pageBounds = new PageBounds(page, pageSize);
+        List studentList = studentDao.findPageList(pageBounds);
+        PageList studentPageList = (PageList)studentList;
+        return studentPageList;
+    }
 
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public PageList findPageListByName(String name, Integer page, Integer pageSize) {
+        if (StringUtils.isEmpty(name)) {
+            throw new IllegalArgumentException("Student's name is empty!");
+        }
+        PageBounds pageBounds = new PageBounds(page, pageSize);
+        List studentList = studentDao.findPageListByName(name, pageBounds);
+        PageList studentPageList = (PageList)studentList;
+        return studentPageList;
+    }
 
 }

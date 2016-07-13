@@ -1,6 +1,7 @@
 package org.mliuframework.spring.orm.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mliuframework.spring.orm.entity.Student;
@@ -13,6 +14,7 @@ import org.mliuframework.spring.orm.vo.StudentVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -166,6 +168,31 @@ public class StudentController {
         }
         log.info("findByName returns: " + JSON.toJSONString(rspVo));
         return rspVo;
+    }
+
+    /**
+     * http://localhost:8080/orm/student/findpagelist?page=1&pageSize=10
+     */
+    @RequestMapping(value = "/findpagelist", method = RequestMethod.GET)
+    @ResponseBody
+    public PageList findPageList(@RequestParam(required = false, defaultValue = "1") Integer page,
+                                 @RequestParam(required = false, defaultValue = "30") Integer pageSize) {
+        log.info("findPageListByName receives: " + page + " " + pageSize);
+        PageList studentPageList = studentService.findPageList(page, pageSize);
+        log.info("findPageListByName returns: " + JSON.toJSONString(studentPageList));
+        return studentPageList;
+    }
+
+    /**
+     * http://localhost:8080/orm/student/viewlist?page=1&pageSize=10
+     */
+    @RequestMapping(value = "/viewlist")
+    public ModelAndView viewList(@RequestParam(required = false, defaultValue = "1") Integer page,
+                                 @RequestParam(required = false, defaultValue = "30") Integer pageSize) {
+        log.info("viewList receives: " + page + " " + pageSize);
+        PageList studentPageList = studentService.findPageList(page, pageSize);
+        log.info("viewList returns: " + JSON.toJSONString(studentPageList));
+        return new ModelAndView("list", "studentList", studentPageList);
     }
 
 }
