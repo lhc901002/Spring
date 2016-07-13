@@ -12,10 +12,7 @@ import org.mliuframework.spring.orm.vo.RspStudentVo;
 import org.mliuframework.spring.orm.vo.StudentVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -100,6 +97,44 @@ public class StudentController {
                     ConstantUtils.STATUS_EXCEPTION) + ": " + e);
         }
         log.info("doSave customer returns: " + JSON.toJSONString(rspVo));
+        return rspVo;
+    }
+
+    /**
+     * http://localhost:8080/orm/student/findbyid
+     */
+    @RequestMapping(value = "/findbyid", method = RequestMethod.GET)
+    @ResponseBody
+    public RspStudentVo findById(@RequestParam Long id) {
+        log.info("findById receives: " + id);
+        RspStudentVo rspVo = new RspStudentVo();
+        try {
+            boolean failFlag = false;
+            if (id == null) {
+                failFlag = true;
+            } else {
+                StudentVo student = studentService.findById(id);
+                if (student == null) {
+                    failFlag = true;
+                } else {
+                    rspVo.setStatus(ConstantUtils.STATUS_SUCCESS);
+                    rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                            ConstantUtils.STATUS_SUCCESS));
+                    rspVo.setStudent(student);
+                }
+            }
+            if (failFlag) {
+                rspVo.setStatus(ConstantUtils.STATUS_FAIL);
+                rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                        ConstantUtils.STATUS_FAIL));
+            }
+        } catch (Exception e) {
+            log.error("findById throws exception: " + e);
+            rspVo.setStatus(ConstantUtils.STATUS_EXCEPTION);
+            rspVo.setStatusInfo(PropertyUtils.getStatusInfo(ConstantUtils.STATUS_PREFIX +
+                    ConstantUtils.STATUS_EXCEPTION) + ": " + e);
+        }
+        log.info("findById returns: " + JSON.toJSONString(rspVo));
         return rspVo;
     }
 

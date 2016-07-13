@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +40,7 @@ public class StudentService {
             if (null == student.getId()) {
                 result = studentMapper.insertSelective(student);
             } else {
+                student.setUpdateTime(new Date());
                 result = studentMapper.updateByPrimaryKeySelective(student);
             }
             if (result > 0) {
@@ -75,11 +77,21 @@ public class StudentService {
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
+    public StudentVo findById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Student's id is empty!");
+        }
+        return studentMapper.selectByPrimaryKey(id);
+    }
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public List<StudentVo> findByName(String name) {
         if (StringUtils.isEmpty(name)) {
             throw new IllegalArgumentException("Student's name is empty!");
         }
         return studentMapper.selectByName(name);
     }
+
+
 
 }
