@@ -1,4 +1,4 @@
-package org.mliuframework.spring.rpc.commons.entity;
+package org.mliuframework.spring.rpc.entity;
 
 import java.util.Date;
 

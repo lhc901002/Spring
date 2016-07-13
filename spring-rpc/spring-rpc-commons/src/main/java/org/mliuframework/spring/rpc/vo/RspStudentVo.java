@@ -1,4 +1,4 @@
-package org.mliuframework.spring.rpc.commons.vo;
+package org.mliuframework.spring.rpc.vo;
 
 /**
  * Created by Michael on 7/11/16.

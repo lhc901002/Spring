@@ -1,4 +1,4 @@
-package org.mliuframework.spring.rpc.commons.vo;
+package org.mliuframework.spring.rpc.vo;
 
 import java.util.List;
 

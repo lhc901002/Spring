@@ -1,17 +1,17 @@
-package org.mliuframework.spring.rpc.commons.vo;
+package org.mliuframework.spring.rpc.vo;
 
 /**
- * Created by Michael on 6/28/16.
+ * Created by Michael on 7/11/16.
  */
-public class RspVo {
+public class MessageVo {
 
     private Integer status;
 
     private String statusInfo;
 
-    public RspVo() {}
+    public MessageVo() {}
 
-    public RspVo(Integer status, String statusInfo) {
+    public MessageVo(Integer status, String statusInfo) {
         this.status = status;
         this.statusInfo = statusInfo;
     }

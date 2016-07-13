@@ -23,13 +23,13 @@ public class StudentDao extends SqlSessionDaoSupport {
 
     public List findPageList(PageBounds pageBounds){
         Map<String, Object> params = new HashMap<String, Object>();
-        return getSqlSession().selectList("org.mliuframework.spring.orm.dao.StudentMapper.selectAll", params, pageBounds);
+        return getSqlSession().selectList("org.mliuframework.spring.rpc.dao.StudentMapper.selectAll", params, pageBounds);
     }
 
     public List findPageListByName(String name, PageBounds pageBounds){
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("name", name);
-        return getSqlSession().selectList("org.mliuframework.spring.orm.dao.StudentMapper.selectByName", params, pageBounds);
+        return getSqlSession().selectList("org.mliuframework.spring.rpc.dao.StudentMapper.selectByName", params, pageBounds);
     }
 
 }

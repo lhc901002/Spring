@@ -1,4 +1,4 @@
-package org.mliuframework.spring.rpc.commons.util;
+package org.mliuframework.spring.rpc.util;
 
 /**
  * Created by Michael on 6/28/16.

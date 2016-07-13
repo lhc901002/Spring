@@ -1,7 +1,7 @@
 package org.mliuframework.spring.rpc.dao;
 
-import org.mliuframework.spring.rpc.commons.entity.Student;
-import org.mliuframework.spring.rpc.commons.vo.StudentVo;
+import org.mliuframework.spring.rpc.entity.Student;
+import org.mliuframework.spring.rpc.vo.StudentVo;
 
 import java.util.List;
 
