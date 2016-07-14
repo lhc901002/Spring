@@ -12,10 +12,6 @@
     <name>mliu-spring-rpc-web Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
-    <properties>
-        <spring.version>4.3.0.RELEASE</spring.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.mliuframework.spring.rpc</groupId>
@@ -25,6 +21,11 @@
         <dependency>
             <groupId>org.mliuframework.spring.rpc</groupId>
             <artifactId>mliu-spring-rpc-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mliuframework.spring.rpc</groupId>
+            <artifactId>mliu-spring-rpc-task</artifactId>
             <version>${project.version}</version>
         </dependency>
 

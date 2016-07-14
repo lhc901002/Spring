@@ -17,6 +17,11 @@
             <artifactId>mliu-spring-rpc-commons</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mliuframework.spring.rpc</groupId>
+            <artifactId>mliu-spring-rpc-persistence</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
     </dependencies>
 </project>

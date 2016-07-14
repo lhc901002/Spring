@@ -11,5 +11,6 @@
 	<context:component-scan base-package="org.mliuframework.spring.rpc.dao" />
 
 	<import resource="classpath:conf/mybatis/mapper-config.xml" />
+	<!--<import resource="classpath:conf/applicationContext-task.xml" />-->
 
 </beans>
