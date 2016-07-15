@@ -1,23 +1,16 @@
 package org.mliuframework.spring.beans;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
- * Created by Michael on 7/14/16.
+ * Created by Michael on 7/15/16.
  */
-public class Account {
+public class Usage {
 
     private Long id;
 
-    private String name;
-
+    @Autowired
     private UserInfo userInfo;
-
-    public Account() {
-    }
-
-    public Account(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public Long getId() {
         return id;
@@ -25,14 +18,6 @@ public class Account {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public UserInfo getUserInfo() {
@@ -44,18 +29,13 @@ public class Account {
     }
 
     public void init() {
-        System.out.println("Account init!");
-    }
-
-    public void complete() {
-        System.out.println("Account complete!");
+        System.out.println("Usage init!");
     }
 
     @Override
     public String toString() {
-        return "Account{" +
+        return "Usage{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", userInfo=" + userInfo +
                 '}';
     }
