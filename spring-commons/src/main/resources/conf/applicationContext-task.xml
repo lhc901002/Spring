@@ -10,8 +10,8 @@
 					       http://www.springframework.org/schema/task
 	   					   http://www.springframework.org/schema/task/spring-task.xsd">
 
-    <context:component-scan base-package="org.mliuframework.spring.schedule" />
-    <context:component-scan base-package="org.mliuframework.spring.task" />
+    <context:component-scan base-package="org.michaelliu.spring.schedule" />
+    <context:component-scan base-package="org.michaelliu.spring.task" />
 
     <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
         <property name="corePoolSize" value="5" />
@@ -19,7 +19,7 @@
         <property name="queueCapacity" value="25" />
     </bean>
 
-    <bean id="messagePrinterTaskExecutor" class="org.mliuframework.spring.task.MessagePrinterTaskExecutor">
+    <bean id="messagePrinterTaskExecutor" class="org.michaelliu.spring.task.MessagePrinterTaskExecutor">
         <constructor-arg ref="taskExecutor" />
     </bean>
 
@@ -34,6 +34,6 @@
         <!--<task:scheduled ref="configuredScheduledJob" method="runTask4" cron="0/5 * * * * MON-FRI"/>-->
     <!--</task:scheduled-tasks>-->
 
-    <bean id="configuredScheduledJob" class="org.mliuframework.spring.schedule.ConfiguredScheduledJob" />
+    <bean id="configuredScheduledJob" class="org.michaelliu.spring.schedule.ConfiguredScheduledJob" />
 
 </beans>

@@ -7,8 +7,8 @@
 					       http://www.springframework.org/schema/beans
 					       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <context:component-scan base-package="org.mliuframework.spring.transaction.service" />
-    <context:component-scan base-package="org.mliuframework.spring.transaction.dao" />
+    <context:component-scan base-package="org.michaelliu.spring.transaction.service" />
+    <context:component-scan base-package="org.michaelliu.spring.transaction.dao" />
 
     <import resource="classpath:conf/applicationContext-data.xml" />
     <import resource="classpath:conf/applicationContext-task.xml" />

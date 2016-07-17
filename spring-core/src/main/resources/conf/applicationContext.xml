@@ -10,27 +10,27 @@
     <context:annotation-config/>
 
     <!--injection via setter and getter-->
-    <bean id="account1" class="org.mliuframework.spring.beans.Account" destroy-method="complete" init-method="init">
+    <bean id="account1" class="org.michaelliu.spring.beans.Account" destroy-method="complete" init-method="init">
         <property name="id" value="123"/>
         <property name="name" value="Michael"/>
         <property name="userInfo" ref="userInfo"/>
     </bean>
 
     <!--injection via constructor-->
-    <bean id="account2" class="org.mliuframework.spring.beans.Account">
+    <bean id="account2" class="org.michaelliu.spring.beans.Account">
         <constructor-arg name="id" value="123"/>
         <constructor-arg name="name" value="Michael"/>
     </bean>
 
     <!--injection via factory-->
-    <bean id="accountFactory" class="org.mliuframework.spring.beans.AccountFactory"/>
+    <bean id="accountFactory" class="org.michaelliu.spring.beans.AccountFactory"/>
     <bean id="account3" factory-bean="accountFactory" factory-method="createAccount">
         <constructor-arg name="id" value="123"/>
         <constructor-arg name="name" value="Michael"/>
         <constructor-arg name="userInfo" ref="userInfo"/>
     </bean>
 
-    <bean id="userInfo" class="org.mliuframework.spring.beans.UserInfo">
+    <bean id="userInfo" class="org.michaelliu.spring.beans.UserInfo">
         <property name="id" value="1999"/>
         <property name="email" value="liu@163.com"/>
         <property name="addressBook">
@@ -42,7 +42,7 @@
         </property>
     </bean>
 
-    <bean id="usage" class="org.mliuframework.spring.beans.Usage">
+    <bean id="usage" class="org.michaelliu.spring.beans.Usage">
         <property name="id" value="123"/>
     </bean>
 

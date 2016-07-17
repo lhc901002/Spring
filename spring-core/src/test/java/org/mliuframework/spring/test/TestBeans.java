@@ -1,6 +1,6 @@
 package org.mliuframework.spring.test;
 
-import org.mliuframework.spring.beans.Usage;
+import org.michaelliu.spring.beans.Usage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

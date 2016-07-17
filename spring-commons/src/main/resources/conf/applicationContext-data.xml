@@ -40,7 +40,7 @@
     </tx:advice>
 
     <aop:config proxy-target-class="true">
-        <aop:pointcut id="serviceMethod" expression="execution(public * org.mliuframework.spring.transaction.service.*.*(..))" />
+        <aop:pointcut id="serviceMethod" expression="execution(public * org.michaelliu.spring.transaction.service.*.*(..))" />
         <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
     </aop:config>
 

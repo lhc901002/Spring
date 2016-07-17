@@ -57,7 +57,7 @@
     <!--自定义filter-->
     <filter>
         <filter-name>parameterHandleFilter</filter-name>
-        <filter-class>org.mliuframework.spring.mvc.filter.ParameterHandleFilter</filter-class>
+        <filter-class>org.michaelliu.spring.mvc.filter.ParameterHandleFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>parameterHandleFilter</filter-name>
