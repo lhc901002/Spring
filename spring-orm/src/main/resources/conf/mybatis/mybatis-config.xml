@@ -4,12 +4,12 @@
 
 <configuration>
     <typeAliases>
-        <typeAlias type="org.mliuframework.spring.orm.entity.Student" alias="Student" />
-        <typeAlias type="org.mliuframework.spring.orm.vo.StudentVo" alias="StudentVo" />
+        <typeAlias type="org.michaelliu.spring.orm.entity.Student" alias="Student" />
+        <typeAlias type="org.michaelliu.spring.orm.vo.StudentVo" alias="StudentVo" />
     </typeAliases>
 
     <typeHandlers>
-        <typeHandler javaType="String" jdbcType="TIMESTAMP" handler="org.mliuframework.spring.orm.handler.DateTypeHandler" />
+        <typeHandler javaType="String" jdbcType="TIMESTAMP" handler="org.michaelliu.spring.orm.handler.DateTypeHandler" />
     </typeHandlers>
 
     <mappers>
