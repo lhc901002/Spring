@@ -1,9 +1,9 @@
-package org.mliuframework.spring.transaction.jta.service;
+package org.michaelliu.spring.jta.service;
 
-import org.mliuframework.spring.transaction.jta.dao.StudentDao;
-import org.mliuframework.spring.transaction.jta.dao.TeacherDao;
-import org.mliuframework.spring.transaction.jta.entity.Student;
-import org.mliuframework.spring.transaction.jta.entity.Teacher;
+import org.michaelliu.spring.jta.dao.StudentDao;
+import org.michaelliu.spring.jta.entity.Teacher;
+import org.michaelliu.spring.jta.dao.TeacherDao;
+import org.michaelliu.spring.jta.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

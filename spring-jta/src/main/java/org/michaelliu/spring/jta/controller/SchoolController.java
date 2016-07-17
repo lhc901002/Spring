@@ -1,8 +1,8 @@
-package org.mliuframework.spring.transaction.jta.controller;
+package org.michaelliu.spring.jta.controller;
 
-import org.mliuframework.spring.transaction.jta.entity.Student;
-import org.mliuframework.spring.transaction.jta.entity.Teacher;
-import org.mliuframework.spring.transaction.jta.service.SchoolService;
+import org.michaelliu.spring.jta.entity.Teacher;
+import org.michaelliu.spring.jta.entity.Student;
+import org.michaelliu.spring.jta.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

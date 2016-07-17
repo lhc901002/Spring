@@ -1,6 +1,6 @@
-package org.mliuframework.spring.transaction.jta.dao;
+package org.michaelliu.spring.jta.dao;
 
-import org.mliuframework.spring.transaction.jta.entity.Student;
+import org.michaelliu.spring.jta.entity.Student;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 

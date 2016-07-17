@@ -10,7 +10,7 @@
 	   					   http://www.springframework.org/schema/mvc
 	   					   http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<context:component-scan base-package="org.mliuframework.spring.transaction.jta.controller" />
+	<context:component-scan base-package="org.michaelliu.spring.jta.controller" />
 
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">

@@ -1,4 +1,4 @@
-package org.mliuframework.spring.transaction.jta.entity;
+package org.michaelliu.spring.jta.entity;
 
 /**
  * Created by Michael on 7/5/16.
