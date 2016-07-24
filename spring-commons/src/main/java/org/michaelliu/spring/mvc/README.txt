@@ -1,3 +1,0 @@
-spring的interceptor需要extends HandlerInterceptorAdapter或implements HandlerInterceptor
-public class AllInterceptor extends HandlerInterceptorAdapter {}
-public class SpringMVCInterceptor implements HandlerInterceptor {}
