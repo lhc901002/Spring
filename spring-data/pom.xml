@@ -13,6 +13,7 @@
         <module>spring-jta</module>
         <module>spring-beans</module>
         <module>spring-cache</module>
+        <module>spring-nosql</module>
     </modules>
 
     <properties>

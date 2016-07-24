@@ -4,12 +4,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>spring-data</artifactId>
+        <artifactId>spring-nosql</artifactId>
         <groupId>org.michaelliu.spring</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-cache</artifactId>
+    <artifactId>spring-memcache</artifactId>
 
+    <properties>
+        <memcache.version>2.6.6</memcache.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.danga</groupId>
+            <artifactId>java-memcached</artifactId>
+            <version>${memcache.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
