@@ -1,4 +1,4 @@
-package org.michaelliu.spring.web.mvc.controller;
+package org.michaelliu.spring.mvc.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
