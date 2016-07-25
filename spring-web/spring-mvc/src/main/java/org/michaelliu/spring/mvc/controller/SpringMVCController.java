@@ -6,6 +6,7 @@ import org.michaelliu.spring.mvc.vo.MessageVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -28,6 +29,16 @@ public class SpringMVCController {
         message.setStatusInfo("Hello Michael");
         mav.addObject("message", message);
         return mav;
+    }
+
+    /**
+     * http://localhost:8080/mvc/message
+     */
+    @RequestMapping(value = "/message", method = RequestMethod.GET)
+    @ResponseBody
+    public MessageVo getMessage() {
+        log.info("getMessage receives");
+        return new MessageVo(123, "hello world");
     }
 
 }

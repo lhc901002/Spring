@@ -24,7 +24,9 @@ public class AllInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
         log.info("AllInterceptor catches request");
-        modelAndView.addObject("info", new MessageVo(1, "this is catched by AllInterceptor"));
+        if (modelAndView != null) {
+            modelAndView.addObject("info", new MessageVo(1, "this is catched by AllInterceptor"));
+        }
     }
 
     @Override
