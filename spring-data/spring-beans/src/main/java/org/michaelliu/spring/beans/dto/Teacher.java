@@ -1,9 +1,13 @@
 package org.michaelliu.spring.beans.dto;
 
+import java.io.Serializable;
+
 /**
  * Created by Michael on 7/5/16.
  */
-public class Teacher {
+public class Teacher implements Serializable {
+
+    private static final long serialVersionUID = -3947581067326767855L;
 
     private Long id;
 

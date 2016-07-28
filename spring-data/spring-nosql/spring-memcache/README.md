@@ -4,9 +4,6 @@ Install java memcache client packages:
 3. create a pom called java-memcached-2.6.6.pom, put it in the same location
 4. run mvn install as following shows:
 
-Windows 7
 mvn install:install-file -Dfile=location\java_memcached-release_2.6.6.jar -DpomFile=location\java-memcached-2.6.6.pom
-
-MAC OS
 
 java_memcached installed success!

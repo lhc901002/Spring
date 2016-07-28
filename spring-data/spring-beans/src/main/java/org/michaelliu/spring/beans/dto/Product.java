@@ -4,30 +4,27 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by Michael on 7/5/16.
+ * Created by Michael on 6/29/16.
  */
-public class Student implements Serializable {
+public class Product implements Serializable {
 
-    private static final long serialVersionUID = -4419310269985564398L;
+    private static final long serialVersionUID = -493230086952089032L;
 
     private Long id;
 
     private String name;
 
-    private Integer age;
+    private Integer price;
+
+    private Integer balance;
+
+    private Byte status;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public Student() {
-    }
-
-    public Student(Long id, String name, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
+    public Product() {}
 
     public Long getId() {
         return id;
@@ -45,12 +42,28 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
+    public Integer getPrice() {
+        return price;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 
     public Date getCreateTime() {
@@ -75,7 +88,11 @@ public class Student implements Serializable {
 
         private String name;
 
-        private Integer age;
+        private Integer price;
+
+        private Integer balance;
+
+        private Byte status;
 
         private Date createTime;
 
@@ -91,8 +108,18 @@ public class Student implements Serializable {
             return this;
         }
 
-        public Builder setAge(Integer age) {
-            this.age = age;
+        public Builder setPrice(Integer price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder setBalance(Integer balance) {
+            this.balance = balance;
+            return this;
+        }
+
+        public Builder setStatus(Byte status) {
+            this.status = status;
             return this;
         }
 
@@ -106,16 +133,18 @@ public class Student implements Serializable {
             return this;
         }
 
-        public Student build() {
-            return new Student(this);
+        public Product build() {
+            return new Product(this);
         }
 
     }
 
-    private Student(Builder builder) {
+    private Product(Builder builder) {
         this.id = builder.id;
         this.name = builder.name;
-        this.age = builder.age;
+        this.price = builder.price;
+        this.balance = builder.balance;
+        this.status = builder.status;
         this.createTime = builder.createTime;
         this.updateTime = builder.updateTime;
     }
