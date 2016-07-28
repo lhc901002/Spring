@@ -10,6 +10,9 @@
         <typeAlias type="org.michaelliu.spring.beans.vo.ProductVo" alias="ProductVo" />
         <typeAlias type="org.michaelliu.spring.beans.vo.ProductFieldUpdateParam"
                    alias="ProductFieldUpdateParam" />
+        <typeAlias type="org.michaelliu.spring.beans.dto.Order" alias="Order" />
+        <typeAlias type="org.michaelliu.spring.beans.vo.OrderVo" alias="OrderVo" />
+        <typeAlias type="org.michaelliu.spring.beans.dto.OrderProduct" alias="OrderProduct" />
     </typeAliases>
 
     <typeHandlers>
@@ -20,5 +23,7 @@
     <mappers>
         <mapper resource="mapper/StudentMapper.xml"/>
         <mapper resource="mapper/ProductMapper.xml"/>
+        <mapper resource="mapper/OrderProductMapper.xml"/>
+        <mapper resource="mapper/OrderMapper.xml"/>
     </mappers>
 </configuration>

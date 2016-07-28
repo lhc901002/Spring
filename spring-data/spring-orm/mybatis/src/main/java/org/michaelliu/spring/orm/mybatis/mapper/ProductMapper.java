@@ -15,6 +15,8 @@ public interface ProductMapper {
 
     List<ProductVo> selectByProperties(Product product);
 
+    List<ProductVo> selectByIdList(List<Long> idList);
+
     int insertSelective(Product product);
 
     int updateByPrimaryKeySelective(Product product);

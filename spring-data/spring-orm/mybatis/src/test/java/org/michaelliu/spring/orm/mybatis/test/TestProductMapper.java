@@ -15,21 +15,39 @@ public class TestProductMapper {
     public static void testSelectByPrimaryKey(Long id) {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/mapper-config.xml");
         ProductMapper productMapper = (ProductMapper) context.getBean("productMapper");
+        ProductVo productVo = productMapper.selectByPrimaryKey(id);
+        System.out.println(JSON.toJSONString(productVo));
+    }
+
+    public static void testInsertSelective(Product product) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/mapper-config.xml");
+        ProductMapper productMapper = (ProductMapper) context.getBean("productMapper");
+        System.out.println("insert data: " + JSON.toJSONString(product));
+        int result = productMapper.insertSelective(product);
+        System.out.println("insert result: " + result);
+        System.out.println("insert result: " + JSON.toJSONString(product));
+    }
+
+    public static void testUpdateByPrimaryKeySelective(Product product) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/mapper-config.xml");
+        ProductMapper productMapper = (ProductMapper) context.getBean("productMapper");
+        System.out.println("update data: " + JSON.toJSONString(product));
+        int result = productMapper.updateByPrimaryKeySelective(product);
+        System.out.println("update result: " + result);
+    }
+
+    public static void main(String[] args) {
+        testSelectByPrimaryKey(1l);
+
         Product product = new Product.Builder()
                 .setName("Michael Liu")
                 .setBalance(13)
                 .setPrice(378)
                 .setStatus((byte) 1)
                 .build();
-        System.out.println("insert data: " + JSON.toJSONString(product));
-//        int result = productMapper.insertSelective(product);
-//        log.info("insert result: " + result);
-        ProductVo productVo = productMapper.selectByPrimaryKey(id);
-        System.out.println(JSON.toJSONString(product));
-    }
+//        testInsertSelective(product);
+        testUpdateByPrimaryKeySelective(product);
 
-    public static void main(String[] args) {
-        testSelectByPrimaryKey(1l);
     }
 
 }

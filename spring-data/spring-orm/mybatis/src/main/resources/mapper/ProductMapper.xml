@@ -51,6 +51,19 @@
         </where>
     </select>
 
+    <select id="selectByIdList" resultMap="orderBaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="product_Base_Column_List"/>
+        from tb_product
+        where id = #{id, jdbcType=BIGINT}
+        <if test="idList != null and idList.size() > 0">
+            WHERE id IN
+            <foreach item="id" index="index" collection="idList" open="(" separator="," close=")">
+                #{id, jdbcType=BIGINT}
+            </foreach>
+        </if>
+    </select>
+
     <insert id="insertSelective" parameterType="Product" useGeneratedKeys="true" keyProperty="id">
         insert into tb_product
         <trim prefix="(" suffix=")" suffixOverrides=",">

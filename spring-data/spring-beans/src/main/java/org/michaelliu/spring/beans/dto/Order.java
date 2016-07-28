@@ -14,9 +14,9 @@ public class Order implements Serializable {
 
     private Long customerId;
 
-    private Long productCount;
-
     private Integer totalPrice;
+
+    private Long productCount;
 
     private Byte status;
 
