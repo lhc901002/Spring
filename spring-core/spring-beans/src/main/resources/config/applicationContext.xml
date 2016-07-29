@@ -42,8 +42,10 @@
         </property>
     </bean>
 
+    <!-- injection via autowired, default by type -->
     <bean id="usage" class="org.michaelliu.spring.beans.Usage">
         <property name="id" value="123"/>
     </bean>
+
 
 </beans>

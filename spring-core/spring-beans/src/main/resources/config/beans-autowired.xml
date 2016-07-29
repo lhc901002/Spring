@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+					       http://www.springframework.org/schema/context/spring-context.xsd
+					       http://www.springframework.org/schema/beans
+					       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <context:annotation-config/>
+
+    <bean id="newObject" class="org.michaelliu.spring.beans.UserInfo">
+        <property name="id" value="1999"/>
+        <property name="email" value="liu@163.com"/>
+        <property name="addressBook">
+            <list value-type="java.lang.String">
+                <value>Beijing</value>
+                <value>Shanghai</value>
+                <value>New York</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- injection via autowired, default by type -->
+    <bean id="usageAutowiredByDefault" class="org.michaelliu.spring.beans.Usage">
+        <property name="id" value="123"/>
+    </bean>
+
+    <!-- injection via autowired, by name -->
+    <bean id="usageAutowiredByName" class="org.michaelliu.spring.beans.Usage" autowire="byName">
+        <property name="id" value="123"/>
+    </bean>
+
+</beans>
