@@ -1,17 +1,17 @@
 package org.michaelliu.spring.mvc.vo;
 
 /**
- * Created by Michael on 7/11/16.
+ * Created by Michael on 6/28/16.
  */
-public class MessageVo {
+public class RspVo {
 
     private Integer status;
 
     private String statusInfo;
 
-    public MessageVo() {}
+    public RspVo() {}
 
-    public MessageVo(Integer status, String statusInfo) {
+    public RspVo(Integer status, String statusInfo) {
         this.status = status;
         this.statusInfo = statusInfo;
     }

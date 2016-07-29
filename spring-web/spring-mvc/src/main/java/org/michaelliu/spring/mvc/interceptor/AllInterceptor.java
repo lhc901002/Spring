@@ -2,7 +2,7 @@ package org.michaelliu.spring.mvc.interceptor;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.michaelliu.spring.mvc.vo.MessageVo;
+import org.michaelliu.spring.mvc.vo.RspVo;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -25,7 +25,7 @@ public class AllInterceptor extends HandlerInterceptorAdapter {
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
         log.info("AllInterceptor catches request");
         if (modelAndView != null) {
-            modelAndView.addObject("info", new MessageVo(1, "this is catched by AllInterceptor"));
+            modelAndView.addObject("info", new RspVo(1, "this is catched by AllInterceptor"));
         }
     }
 
