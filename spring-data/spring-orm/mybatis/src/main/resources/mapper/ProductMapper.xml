@@ -18,6 +18,10 @@
         id, prod_name, price, balance, status, create_time, update_time
     </sql>
 
+    <sql id="product_Base_Column_List2">
+        tb_product.id, prod_name, price, balance, status, tb_product.create_time, update_time
+    </sql>
+
     <select id="selectByPrimaryKey" resultMap="productBaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="product_Base_Column_List"/>
@@ -51,7 +55,7 @@
         </where>
     </select>
 
-    <select id="selectByIdList" resultMap="orderBaseResultMap" parameterType="java.lang.Long">
+    <select id="selectByIdList" resultMap="productBaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="product_Base_Column_List"/>
         from tb_product
@@ -62,6 +66,14 @@
                 #{id, jdbcType=BIGINT}
             </foreach>
         </if>
+    </select>
+
+    <select id="selectAllWithOrder" resultMap="productBaseResultMap">
+        select
+        <include refid="product_Base_Column_List"/>
+        from tb_product p
+        where EXISTS (SELECT 1 FROM tb_product, tb_order_product
+        WHERE p.id = tb_product.id AND tb_product.id = tb_order_product.product_id)
     </select>
 
     <insert id="insertSelective" parameterType="Product" useGeneratedKeys="true" keyProperty="id">
