@@ -1,15 +1,18 @@
-package org.michaelliu.spring.beans;
+package org.michaelliu.spring.beans.autowire;
 
+import org.michaelliu.spring.beans.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 /**
- * Created by Michael on 7/15/16.
+ * Created by michael on 2016/7/29.
  */
-public class Usage {
+public class UsageAnnotationByName {
 
     private Long id;
 
     @Autowired
+    @Qualifier("newUserInfo")
     private UserInfo userInfo;
 
     public Long getId() {
@@ -28,13 +31,9 @@ public class Usage {
         this.userInfo = userInfo;
     }
 
-    public void init() {
-        System.out.println("Usage init!");
-    }
-
     @Override
     public String toString() {
-        return "Usage{" +
+        return "UsageAnnotationByName{" +
                 "id=" + id +
                 ", userInfo=" + userInfo +
                 '}';

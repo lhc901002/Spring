@@ -9,7 +9,7 @@
 
     <context:annotation-config/>
 
-    <bean id="newObject" class="org.michaelliu.spring.beans.UserInfo">
+    <bean id="newUserInfo" class="org.michaelliu.spring.beans.UserInfo">
         <property name="id" value="1999"/>
         <property name="email" value="liu@163.com"/>
         <property name="addressBook">
@@ -21,13 +21,31 @@
         </property>
     </bean>
 
-    <!-- injection via autowired, default by type -->
-    <bean id="usageAutowiredByDefault" class="org.michaelliu.spring.beans.Usage">
+    <!-- injection via autowire, default by type, using annotation -->
+    <bean id="usageAutowiredByType" class="org.michaelliu.spring.beans.autowire.UsageAnnotationByType">
         <property name="id" value="123"/>
     </bean>
 
-    <!-- injection via autowired, by name -->
-    <bean id="usageAutowiredByName" class="org.michaelliu.spring.beans.Usage" autowire="byName">
+    <!-- injection via autowire, by name, using annotation -->
+    <bean id="usageAutowiredByName" class="org.michaelliu.spring.beans.autowire.UsageAnnotationByName">
+        <property name="id" value="123"/>
+    </bean>
+
+    <!-- injection via autowire, by default, using configuration -->
+    <bean id="usageConfigurationByDefault" class="org.michaelliu.spring.beans.autowire.UsageConfiguration"
+          autowire="default">
+        <property name="id" value="123"/>
+    </bean>
+
+    <!-- injection via autowire, by type, using configuration -->
+    <bean id="usageConfigurationByType" class="org.michaelliu.spring.beans.autowire.UsageConfiguration"
+          autowire="byType">
+        <property name="id" value="123"/>
+    </bean>
+
+    <!-- injection via autowire, by name, using configuration -->
+    <bean id="usageConfigurationByName" class="org.michaelliu.spring.beans.autowire.UsageConfiguration"
+          autowire="byName">
         <property name="id" value="123"/>
     </bean>
 
