@@ -1,9 +1,9 @@
-package org.michaelliu.spring.rmi.consumer.test;
+package org.michaelliu.spring.hessian.consumer.test;
 
 import com.alibaba.fastjson.JSON;
 import org.michaelliu.spring.beans.Account;
-import org.michaelliu.spring.rmi.provider.AccountService;
-import org.michaelliu.spring.rmi.provider.MessageService;
+import org.michaelliu.spring.hessian.provider.AccountService;
+import org.michaelliu.spring.hessian.provider.MessageService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

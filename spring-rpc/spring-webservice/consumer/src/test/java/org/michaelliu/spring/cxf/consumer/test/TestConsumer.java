@@ -1,9 +1,8 @@
-package org.michaelliu.spring.rmi.consumer.test;
+package org.michaelliu.spring.cxf.consumer.test;
 
 import com.alibaba.fastjson.JSON;
-import org.michaelliu.spring.beans.Account;
-import org.michaelliu.spring.rmi.provider.AccountService;
-import org.michaelliu.spring.rmi.provider.MessageService;
+import org.michaelliu.spring.cxf.beans.Account;
+import org.michaelliu.spring.cxf.provider.AccountService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,13 +13,6 @@ import java.util.List;
  */
 public class TestConsumer {
 
-    private static void testMessageService() {
-        ApplicationContext appContext = new ClassPathXmlApplicationContext("classpath:config/applicationContext.xml");
-        MessageService messageService = appContext.getBean("messageService", MessageService.class);
-        String message = messageService.echo("Hello Michael");
-        System.out.println("MessageService received: " + message);
-    }
-
     private static void testAccountService() {
         ApplicationContext appContext = new ClassPathXmlApplicationContext("classpath:config/applicationContext.xml");
         AccountService accountService = appContext.getBean("accountService", AccountService.class);
@@ -30,7 +22,6 @@ public class TestConsumer {
     }
 
     public static void main(String[] args) {
-        testMessageService();
         testAccountService();
     }
 
