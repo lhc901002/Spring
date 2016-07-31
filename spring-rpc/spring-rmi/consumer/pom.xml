@@ -12,6 +12,12 @@
     <url>http://maven.apache.org</url>
 
     <dependencies>
+        <!-- dependency on module spring-rmi-provider -->
+        <dependency>
+            <groupId>org.michaelliu.spring</groupId>
+            <artifactId>spring-rmi-provider</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

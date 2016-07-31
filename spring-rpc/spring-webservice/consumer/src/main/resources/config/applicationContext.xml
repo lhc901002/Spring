@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/context
+					       http://www.springframework.org/schema/context/spring-context.xsd
+					       http://www.springframework.org/schema/beans
+					       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<context:property-placeholder location="classpath:property/url.properties" ignore-unresolvable="true" />
+
+	<!--Web service using cxf-->
+	<bean id="accountService" class="org.michaelliu.spring.cxf.provider.AccountService"
+		  factory-bean="accountServiceFactory" factory-method="create"/>
+
+	<bean id="accountServiceFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+		<property name="serviceClass" value="org.michaelliu.spring.cxf.provider.AccountService"/>
+		<property name="address" value="${ws.account.url}"/>
+	</bean>
+
+</beans>

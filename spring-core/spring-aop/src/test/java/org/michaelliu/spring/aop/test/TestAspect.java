@@ -47,7 +47,7 @@ public class TestAspect {
     }
 
     public static void main(String[] args) {
-        SimpleAccount account = new SimpleAccount(123l, "Michael Liu", 400);
+        SimpleAccount account = new SimpleAccount(123l, "Michael Liu", 50);
 //        testAdvice(account);
 //        testAspectAnnotation(account);
 //        testAspectConfiguration(account);

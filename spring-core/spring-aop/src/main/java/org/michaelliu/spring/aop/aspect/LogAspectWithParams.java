@@ -43,7 +43,7 @@ public class LogAspectWithParams {
         log.info("around receives: " + args);
         String method = joinPoint.getSignature().getName();
         SimpleAccount account = (SimpleAccount) args[0];
-        if (method.equals("drawMoney") && account.getBalance() <= 0) {
+        if (method.equals("drawMoney") && account.getBalance() < (Integer) args[1]) {
             log.info("No money available to draw out of account!");
             throw new IllegalStateException("No money in the account!");
         }

@@ -3,17 +3,37 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
-    <modules>
-        <module>provider</module>
-        <module>consumer</module>
-    </modules>
     <parent>
         <artifactId>spring-rpc</artifactId>
         <groupId>org.michaelliu.spring</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>spring-hessian</artifactId>
+    <packaging>pom</packaging>
 
+    <modules>
+        <module>provider</module>
+        <module>consumer</module>
+    </modules>
+
+    <properties>
+        <hessian.version>4.0.38</hessian.version>
+    </properties>
+
+    <dependencies>
+        <!-- dependency on module spring-beans -->
+        <dependency>
+            <groupId>org.michaelliu.spring</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- hessian dependency -->
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>${hessian.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -7,10 +7,12 @@
     <artifactId>spring-rpc</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>spring-rmi</module>
         <module>spring-hessian</module>
         <module>spring-webservice</module>
+        <module>spring-beans</module>
     </modules>
 
     <properties>

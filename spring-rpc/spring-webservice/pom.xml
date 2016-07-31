@@ -2,19 +2,43 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>spring-rpc</artifactId>
         <groupId>org.michaelliu.spring</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
     <artifactId>spring-webservice</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>provider</module>
         <module>consumer</module>
     </modules>
 
+    <properties>
+        <cxf.version>3.1.6</cxf.version>
+    </properties>
+
+    <dependencies>
+        <!-- dependency on module spring-beans -->
+        <dependency>
+            <groupId>org.michaelliu.spring</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- cxf web service -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
