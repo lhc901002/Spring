@@ -26,4 +26,9 @@ public class AccountServiceImpl implements AccountService {
         return account;
     }
 
+    @Override
+    public Integer getBalance(SimpleAccount account) {
+        return account.getBalance();
+    }
+
 }

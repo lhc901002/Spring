@@ -18,11 +18,13 @@ public class LogAspectConfiguration {
         log.info("logBefore() executes: " + joinPoint.getSignature().getName());
     }
 
-    public void logAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        log.info("logAround() executes: " + joinPoint.getSignature().getName());
-        log.info("Method's arguments: " + Arrays.toString(joinPoint.getArgs()));
+    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        String method = joinPoint.getSignature().getName();
+        log.info("logAround() executes: " + method);
+        log.info(method + " arguments: " + Arrays.toString(joinPoint.getArgs()));
         Object result = joinPoint.proceed(); //continue on the intercepted method
-        log.info("Method's result : " + result);
+        log.info(method + " returns: " + result);
+        return result;
     }
 
     public void logAfter(JoinPoint joinPoint) {
@@ -30,13 +32,13 @@ public class LogAspectConfiguration {
     }
 
     public void logAfterReturning(JoinPoint joinPoint, Object result) {
-        log.info("logAfterReturning() executes: " + joinPoint.getSignature().getName());
-        log.info("Method returns: " + result);
+        String method = joinPoint.getSignature().getName();
+        log.info("logAfterReturning() executes: " + method + "\t" + method + " returns: " + result);
     }
 
     public void logAfterThrowing(JoinPoint joinPoint, Throwable error) {
-        log.info("logAfterThrowing() executes: " + joinPoint.getSignature().getName());
-        log.info("Method throws: " + error);
+        String method = joinPoint.getSignature().getName();
+        log.info("logAfterThrowing() executes: " + "\t" + method + " throws: " + error);
     }
 
 }

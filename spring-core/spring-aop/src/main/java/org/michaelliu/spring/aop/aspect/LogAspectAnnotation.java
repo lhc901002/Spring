@@ -15,6 +15,10 @@ import java.util.Arrays;
 
 /**
  * Created by michael on 2016/7/31.
+ *
+ * This is an unordered execution, meaning that @Before can be invoked after @Around,
+ * that @After can be invoked before @Around, because there exists overlaps between
+ * methods.
  */
 @Aspect
 public class LogAspectAnnotation {
@@ -28,12 +32,15 @@ public class LogAspectAnnotation {
     }
 
     // scan all methods within AccountService
+    // return type should be Object, if it is void, logAfterReturning() cannot get any result value.
     @Around("execution(* org.michaelliu.spring.aop.service.AccountService.*(..))")
-    public void logAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        log.info("logAround() executes: " + joinPoint.getSignature().getName());
-        log.info("Method's arguments: " + Arrays.toString(joinPoint.getArgs()));
+    public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        String method = joinPoint.getSignature().getName();
+        log.info("logAround() executes: " + method);
+        log.info(method + " arguments: " + Arrays.toString(joinPoint.getArgs()));
         Object result = joinPoint.proceed(); //continue on the intercepted method
-        log.info("Method's result : " + result);
+        log.info(method + " returns: " + result);
+        return result;
     }
 
     // scan all methods within AccountService
@@ -47,8 +54,8 @@ public class LogAspectAnnotation {
             pointcut = "execution(* org.michaelliu.spring.aop.service.AccountService.*(..))",
             returning= "result")
     public void logAfterReturning(JoinPoint joinPoint, Object result) {
-        log.info("logAfterReturning() executes: " + joinPoint.getSignature().getName());
-        log.info("Method returns: " + result);
+        String method = joinPoint.getSignature().getName();
+        log.info("logAfterReturning() executes: " + method + "\t" + method + " returns: " + result);
     }
 
     // scan all methods within AccountService
@@ -56,8 +63,8 @@ public class LogAspectAnnotation {
             pointcut = "execution(* org.michaelliu.spring.aop.service.AccountService.*(..))",
             throwing= "error")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable error) {
-        log.info("logAfterThrowing() executes: " + joinPoint.getSignature().getName());
-        log.info("Method throws: " + error);
+        String method = joinPoint.getSignature().getName();
+        log.info("logAfterThrowing() executes: " + "\t" + method + " throws: " + error);
     }
 
 }

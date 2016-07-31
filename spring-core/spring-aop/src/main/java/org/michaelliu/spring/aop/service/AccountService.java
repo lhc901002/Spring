@@ -11,4 +11,6 @@ public interface AccountService {
 
     SimpleAccount drawMoney(SimpleAccount account, Integer amount);
 
+    Integer getBalance(SimpleAccount account);
+
 }

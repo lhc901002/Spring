@@ -21,7 +21,7 @@ public class TestAspect {
 
     private static void testAspectAnnotation(SimpleAccount account) {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(
-                new String[] { "classpath:config/applicationContext.xml" });
+                new String[] { "classpath:config/aspectj.xml" });
         AccountService accountService = appContext.getBean("accountService", AccountService.class);
         accountService.saveMoney(account, 100);
         accountService.drawMoney(account, 200);
@@ -30,7 +30,16 @@ public class TestAspect {
 
     private static void testAspectConfiguration(SimpleAccount account) {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(
-                new String[] { "classpath:config/application-aspect.xml" });
+                new String[] {"classpath:config/aspect-config.xml"});
+        AccountService accountService = appContext.getBean("accountService", AccountService.class);
+        accountService.saveMoney(account, 100);
+        accountService.drawMoney(account, 200);
+        accountService.drawMoney(account, -20);
+    }
+
+    private static void testAspectWithParams(SimpleAccount account) {
+        ApplicationContext appContext = new ClassPathXmlApplicationContext(
+                new String[] {"classpath:config/aspectj.xml"});
         AccountService accountService = appContext.getBean("accountService", AccountService.class);
         accountService.saveMoney(account, 100);
         accountService.drawMoney(account, 200);
@@ -41,7 +50,8 @@ public class TestAspect {
         SimpleAccount account = new SimpleAccount(123l, "Michael Liu", 400);
 //        testAdvice(account);
 //        testAspectAnnotation(account);
-        testAspectConfiguration(account);
+//        testAspectConfiguration(account);
+        testAspectWithParams(account);
     }
 
 }
