@@ -18,6 +18,13 @@
     </properties>
 
     <dependencies>
+        <!-- dependency on module spring-beans -->
+        <dependency>
+            <groupId>org.michaelliu.spring</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- spring aop configuration -->
         <dependency>
             <groupId>org.springframework</groupId>
