@@ -48,6 +48,14 @@ public class Account implements Serializable {
         this.balance = balance;
     }
 
+    public void init() {
+        System.out.println("Account created");
+    }
+
+    public void destroy() {
+        System.out.println("Account destroyed");
+    }
+
     @Override
     public String toString() {
         return "Account{" +

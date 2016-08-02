@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+					       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--injection via setter and getter-->
+    <bean id="accountBySetter" class="org.michaelliu.spring.beans.Account" destroy-method="destroy" init-method="init">
+        <property name="id" value="123"/>
+        <property name="name" value="Michael"/>
+        <property name="balance" value="1000"/>
+    </bean>
+
+    <!--injection via constructor-->
+    <bean id="accountByConstructor" class="org.michaelliu.spring.beans.Account">
+        <constructor-arg name="id" value="123456"/>
+        <constructor-arg name="name" value="Steven"/>
+        <constructor-arg name="balance" value="2000"/>
+    </bean>
+
+    <!--injection via factory-->
+    <bean id="accountFactory" class="org.michaelliu.spring.beans.AccountFactory"/>
+    <bean id="accountByFactory" factory-bean="accountFactory" factory-method="createAccount">
+        <constructor-arg name="id" value="55555"/>
+        <constructor-arg name="name" value="Jackson"/>
+        <constructor-arg name="balance" value="500"/>
+    </bean>
+
+</beans>

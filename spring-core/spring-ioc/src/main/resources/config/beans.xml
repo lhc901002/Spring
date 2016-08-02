@@ -7,7 +7,7 @@
     <bean id="accountDao" class="org.michaelliu.spring.ioc.xml.dao.AccountDao"/>
 
     <bean id="myAccountDao" class="org.michaelliu.spring.ioc.xml.dao.AnotherAccountDao"/>
-    
+
     <bean id="accountService" class="org.michaelliu.spring.ioc.xml.service.AccountService" autowire="byType"/>
 
     <bean id="myAccountService" class="org.michaelliu.spring.ioc.xml.service.MyAccountService" autowire="byName"/>
