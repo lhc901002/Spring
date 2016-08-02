@@ -9,5 +9,6 @@
 
     <context:component-scan base-package="org.michaelliu.spring.ioc.annotation.dao" />
     <context:component-scan base-package="org.michaelliu.spring.ioc.annotation.service" />
+    <context:component-scan base-package="org.michaelliu.spring.ioc.annotation.config" />
 
 </beans>
