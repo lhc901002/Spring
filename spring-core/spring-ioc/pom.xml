@@ -8,12 +8,7 @@
         <groupId>org.michaelliu.spring</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>spring-aop</artifactId>
-
-    <properties>
-        <spring.version>4.3.0.RELEASE</spring.version>
-        <aspectjweaver.version>1.8.9</aspectjweaver.version>
-    </properties>
+    <artifactId>spring-ioc</artifactId>
 
     <dependencies>
         <!-- dependency on module spring-beans -->
@@ -21,18 +16,6 @@
             <groupId>org.michaelliu.spring</groupId>
             <artifactId>spring-beans</artifactId>
             <version>${project.version}</version>
-        </dependency>
-
-        <!-- spring aop configuration -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectjweaver.version}</version>
         </dependency>
     </dependencies>
 

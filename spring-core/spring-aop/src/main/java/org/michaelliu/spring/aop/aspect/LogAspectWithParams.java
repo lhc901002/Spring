@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.michaelliu.spring.beans.SimpleAccount;
+import org.michaelliu.spring.beans.Account;
 
 /**
  * Created by michael on 2016/7/31.
@@ -33,7 +33,7 @@ public class LogAspectWithParams {
     }
 
     @Before("execution(* org.michaelliu.spring.aop.service.AccountService.*(..)) && args(account, amount)")
-    public void before2(SimpleAccount account, Integer amount) {
+    public void before2(Account account, Integer amount) {
         log.info("before2 receives params: " + account + ", " + amount);
     }
 
@@ -42,7 +42,7 @@ public class LogAspectWithParams {
         Object[] args = joinPoint.getArgs();
         log.info("around receives: " + args);
         String method = joinPoint.getSignature().getName();
-        SimpleAccount account = (SimpleAccount) args[0];
+        Account account = (Account) args[0];
         if (method.equals("drawMoney") && account.getBalance() < (Integer) args[1]) {
             log.info("No money available to draw out of account!");
             throw new IllegalStateException("No money in the account!");

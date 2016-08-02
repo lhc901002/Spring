@@ -1,22 +1,27 @@
 package org.michaelliu.spring.beans;
 
+import java.io.Serializable;
+
 /**
- * Created by Michael on 7/14/16.
+ * Created by michael on 2016/8/2.
  */
-public class Account {
+public class Account implements Serializable {
+
+    private static final long serialVersionUID = -1979894774396318892L;
 
     private Long id;
 
     private String name;
 
-    private UserInfo userInfo;
+    private Integer balance;
 
     public Account() {
     }
 
-    public Account(Long id, String name) {
+    public Account(Long id, String name, Integer balance) {
         this.id = id;
         this.name = name;
+        this.balance = balance;
     }
 
     public Long getId() {
@@ -35,20 +40,12 @@ public class Account {
         this.name = name;
     }
 
-    public UserInfo getUserInfo() {
-        return userInfo;
+    public Integer getBalance() {
+        return balance;
     }
 
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
-    }
-
-    public void init() {
-        System.out.println("Account init!");
-    }
-
-    public void complete() {
-        System.out.println("Account complete!");
+    public void setBalance(Integer balance) {
+        this.balance = balance;
     }
 
     @Override
@@ -56,7 +53,7 @@ public class Account {
         return "Account{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", userInfo=" + userInfo +
+                ", balance=" + balance +
                 '}';
     }
 

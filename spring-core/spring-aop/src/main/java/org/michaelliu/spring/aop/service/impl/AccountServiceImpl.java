@@ -1,7 +1,7 @@
 package org.michaelliu.spring.aop.service.impl;
 
 import org.michaelliu.spring.aop.service.AccountService;
-import org.michaelliu.spring.beans.SimpleAccount;
+import org.michaelliu.spring.beans.Account;
 
 /**
  * Created by michael on 2016/7/31.
@@ -9,7 +9,7 @@ import org.michaelliu.spring.beans.SimpleAccount;
 public class AccountServiceImpl implements AccountService {
 
     @Override
-    public SimpleAccount saveMoney(SimpleAccount account, Integer amount) {
+    public Account saveMoney(Account account, Integer amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("Amount should be non-negative!");
         }
@@ -18,7 +18,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public SimpleAccount drawMoney(SimpleAccount account, Integer amount) {
+    public Account drawMoney(Account account, Integer amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("Amount should be non-negative!");
         }
@@ -27,7 +27,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Integer getBalance(SimpleAccount account) {
+    public Integer getBalance(Account account) {
         return account.getBalance();
     }
 

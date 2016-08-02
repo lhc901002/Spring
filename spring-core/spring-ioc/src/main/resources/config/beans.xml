@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+					       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="accountDao" class="org.michaelliu.spring.ioc.xml.dao.AccountDao"/>
+
+    <bean id="myAccountDao" class="org.michaelliu.spring.ioc.xml.dao.AnotherAccountDao"/>
+    
+    <bean id="accountService" class="org.michaelliu.spring.ioc.xml.service.AccountService" autowire="byType"/>
+
+    <bean id="myAccountService" class="org.michaelliu.spring.ioc.xml.service.MyAccountService" autowire="byName"/>
+
+</beans>
