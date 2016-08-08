@@ -10,6 +10,6 @@
     <context:component-scan base-package="org.michaelliu.spring.orm.jdbctemplate.service" />
 	<context:component-scan base-package="org.michaelliu.spring.orm.jdbctemplate.dao" />
 
-	<import resource="classpath:config/applicationContext-jdbctemplate.xml" />
+	<import resource="classpath:config/jdbctemplate.xml" />
 
 </beans>

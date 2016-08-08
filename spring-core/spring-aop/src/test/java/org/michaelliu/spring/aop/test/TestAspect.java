@@ -1,7 +1,7 @@
 package org.michaelliu.spring.aop.test;
 
 import org.michaelliu.spring.aop.service.AccountService;
-import org.michaelliu.spring.beans.SimpleAccount;
+import org.michaelliu.spring.beans.Account;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class TestAspect {
 
-    private static void testAdvice(SimpleAccount account) {
+    private static void testAdvice(Account account) {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(
                 new String[] { "classpath:config/applicationContext.xml" });
         AccountService accountService = appContext.getBean("accountServiceProxy", AccountService.class);
@@ -19,7 +19,7 @@ public class TestAspect {
         accountService.drawMoney(account, -20);
     }
 
-    private static void testAspectAnnotation(SimpleAccount account) {
+    private static void testAspectAnnotation(Account account) {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(
                 new String[] { "classpath:config/aspectj.xml" });
         AccountService accountService = appContext.getBean("accountService", AccountService.class);
@@ -28,7 +28,7 @@ public class TestAspect {
         accountService.drawMoney(account, -20);
     }
 
-    private static void testAspectConfiguration(SimpleAccount account) {
+    private static void testAspectConfiguration(Account account) {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(
                 new String[] {"classpath:config/aspect-config.xml"});
         AccountService accountService = appContext.getBean("accountService", AccountService.class);
@@ -37,7 +37,7 @@ public class TestAspect {
         accountService.drawMoney(account, -20);
     }
 
-    private static void testAspectWithParams(SimpleAccount account) {
+    private static void testAspectWithParams(Account account) {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(
                 new String[] {"classpath:config/aspectj.xml"});
         AccountService accountService = appContext.getBean("accountService", AccountService.class);
@@ -47,7 +47,7 @@ public class TestAspect {
     }
 
     public static void main(String[] args) {
-        SimpleAccount account = new SimpleAccount(123l, "Michael Liu", 50);
+        Account account = new Account(123l, "Michael Liu", 50);
 //        testAdvice(account);
 //        testAspectAnnotation(account);
 //        testAspectConfiguration(account);
