@@ -42,7 +42,7 @@ public class TestAnnotationBeans {
     }
 
     public static void main(String[] args) {
-//        testAccount();
+        testAccount();
         testAccountConfig();
     }
 

@@ -10,6 +10,7 @@
     <bean id="logAfterAdvice" class="org.michaelliu.spring.aop.advice.LogAfterAdvice"/>
     <bean id="logAroundAdvice" class="org.michaelliu.spring.aop.advice.LogAroundAdvice"/>
     <bean id="logThrowAdvice" class="org.michaelliu.spring.aop.advice.LogThrowAdvice"/>
+    <bean id="timeAroundAdvice" class="org.michaelliu.spring.aop.advice.TimeAroundAdvice"/>
 
     <bean id="accountServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="target" ref="accountService" />
@@ -19,6 +20,7 @@
                 <value>logAfterAdvice</value>
                 <value>logAroundAdvice</value>
                 <value>logThrowAdvice</value>
+                <value>timeAroundAdvice</value>
             </list>
         </property>
     </bean>

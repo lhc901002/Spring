@@ -48,10 +48,10 @@ public class TestAspect {
 
     public static void main(String[] args) {
         Account account = new Account(123l, "Michael Liu", 50);
-//        testAdvice(account);
+        testAdvice(account);
 //        testAspectAnnotation(account);
 //        testAspectConfiguration(account);
-        testAspectWithParams(account);
+//        testAspectWithParams(account);
     }
 
 }

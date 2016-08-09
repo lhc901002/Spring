@@ -1,5 +1,7 @@
 package org.michaelliu.spring.beans;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -27,6 +29,7 @@ public class Account implements Serializable {
         this.id = id;
         this.name = name;
         this.balance = balance;
+        createTime = updateTime = new Date();
     }
 
     public Long getId() {
@@ -75,6 +78,17 @@ public class Account implements Serializable {
 
     public void destroy() {
         System.out.println("Account destroyed");
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("name", name)
+                .append("balance", balance)
+                .append("createTime", createTime)
+                .append("updateTime", updateTime)
+                .toString();
     }
 
 }
