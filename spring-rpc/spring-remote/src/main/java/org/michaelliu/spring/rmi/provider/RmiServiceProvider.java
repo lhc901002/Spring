@@ -1,4 +1,4 @@
-package org.michaelliu.spring.remote.service.impl;
+package org.michaelliu.spring.rmi.provider;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -7,9 +7,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Created by michael on 2016/8/4.
  */
-public class RmiProviderInit {
+public class RmiServiceProvider {
 
-    private static final Log log = LogFactory.getLog(RmiProviderInit.class);
+    private static final Log log = LogFactory.getLog(RmiServiceProvider.class);
 
     private static void init() {
         log.info("Rmi prepares to start...");

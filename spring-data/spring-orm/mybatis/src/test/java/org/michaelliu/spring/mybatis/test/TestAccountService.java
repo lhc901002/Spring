@@ -7,7 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.michaelliu.spring.beans.dto.Account;
 import org.michaelliu.spring.beans.vo.AccountVo;
-import org.michaelliu.spring.mybatis.service.AccountService;
+import org.michaelliu.spring.service.AccountService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

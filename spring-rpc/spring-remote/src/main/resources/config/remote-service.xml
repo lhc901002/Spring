@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   xsi:schemaLocation="http://www.springframework.org/schema/context
+					       http://www.springframework.org/schema/context/spring-context.xsd
+					       http://www.springframework.org/schema/beans
 					       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="messageService" class="org.michaelliu.spring.remote.service.impl.MessageServiceImpl"/>
-	<bean id="accountService" class="org.michaelliu.spring.remote.service.impl.AccountServiceImpl"/>
+	<context:component-scan base-package="org.michaelliu.spring.mybatis.mapper" />
+	<context:component-scan base-package="org.michaelliu.spring.mybatis.dao" />
+	<context:component-scan base-package="org.michaelliu.spring.mybatis.service" />
+
+	<bean id="messageService" class="org.michaelliu.spring.service.impl.MessageServiceImpl"/>
 
 	<!-- configure rmi service -->
 	<bean id="messageServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
 		<!-- does not necessarily have to be the same name as the bean to be exported -->
 		<property name="serviceName" value="rmi/MessageService"/>
 		<property name="service" ref="messageService"/>
-		<property name="serviceInterface" value="org.michaelliu.spring.remote.service.MessageService"/>
+		<property name="serviceInterface" value="org.michaelliu.spring.service.MessageService"/>
 		<!-- defaults to 1099 -->
 		<property name="registryPort" value="1199"/>
 	</bean>
@@ -20,7 +26,7 @@
 		<!-- does not necessarily have to be the same name as the bean to be exported -->
 		<property name="serviceName" value="rmi/AccountService"/>
 		<property name="service" ref="accountService"/>
-		<property name="serviceInterface" value="org.michaelliu.spring.remote.service.AccountService"/>
+		<property name="serviceInterface" value="org.michaelliu.spring.service.AccountService"/>
 		<!-- defaults to 1099 -->
 		<property name="registryPort" value="1199"/>
 	</bean>

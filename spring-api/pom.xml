@@ -10,5 +10,17 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-api</artifactId>
 
+    <properties>
+        <mybatis.paginator.version>1.2.17</mybatis.paginator.version>
+    </properties>
+
+    <dependencies>
+        <!-- mybatis-paginator物理分页插件 -->
+        <dependency>
+            <groupId>com.github.miemiedev</groupId>
+            <artifactId>mybatis-paginator</artifactId>
+            <version>${mybatis.paginator.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

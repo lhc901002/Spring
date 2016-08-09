@@ -1,9 +1,9 @@
-package org.michaelliu.spring.remote.service.impl;
+package org.michaelliu.spring.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.michaelliu.spring.remote.service.MessageService;
+import org.michaelliu.spring.service.MessageService;
 
 /**
  * Created by Michael on 7/14/16.
@@ -15,7 +15,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public String echo(String message) {
         log.info("Message server receives: " + message);
-        String rspStr = "";
+        String rspStr;
         if (StringUtils.isEmpty(message)) {
             rspStr = "Message server has not received any message from client!";
         } else if (message.equals("quit") || message.equals("exit")) {

@@ -28,14 +28,6 @@
             <artifactId>mybatis-spring</artifactId>
             <version>${mybatis.spring.version}</version>
         </dependency>
-
-        <!-- mybatis-paginator物理分页插件 -->
-        <dependency>
-            <groupId>com.github.miemiedev</groupId>
-            <artifactId>mybatis-paginator</artifactId>
-            <version>${mybatis.paginator.version}</version>
-        </dependency>
-
     </dependencies>
 
 </project>

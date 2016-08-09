@@ -1,17 +1,19 @@
-package org.michaelliu.spring.remote.service.impl;
+package org.michaelliu.spring.webservice.impl;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.michaelliu.spring.beans.Account;
-import org.michaelliu.spring.remote.service.AccountService;
+import org.michaelliu.spring.webservice.AccountService;
+import org.michaelliu.spring.webservice.beans.Account;
 
+import javax.jws.WebService;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Michael on 7/14/16.
  */
+@WebService(endpointInterface = "org.michaelliu.spring.webservice.AccountService")
 public class AccountServiceImpl implements AccountService {
 
     private static final Log log = LogFactory.getLog(AccountServiceImpl.class);

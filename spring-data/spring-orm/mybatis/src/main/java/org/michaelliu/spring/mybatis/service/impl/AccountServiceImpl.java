@@ -8,8 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import org.michaelliu.spring.beans.dto.Account;
 import org.michaelliu.spring.beans.vo.AccountVo;
 import org.michaelliu.spring.mybatis.dao.AccountDao;
-import org.michaelliu.spring.mybatis.mapper.AccountMapper;
-import org.michaelliu.spring.mybatis.service.AccountService;
+import org.michaelliu.spring.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -28,9 +27,6 @@ public class AccountServiceImpl implements AccountService {
     private static final Log log = LogFactory.getLog(AccountService.class);
 
     @Autowired
-    private AccountMapper accountMapper;
-
-    @Autowired
     private AccountDao accountDao;
 
     @Override
@@ -42,10 +38,10 @@ public class AccountServiceImpl implements AccountService {
         int result;
         try {
             if (null == account.getId()) {
-                result = accountMapper.insertSelective(account);
+                result = accountDao.saveSelective(account);
             } else {
                 account.setUpdateTime(new Date());
-                result = accountMapper.updateByPrimaryKeySelective(account);
+                result = accountDao.updateByIdSelective(account);
             }
         } catch (Exception e) {
             log.error("saveOrUpdateSelective exception: " + e);
@@ -60,7 +56,7 @@ public class AccountServiceImpl implements AccountService {
         if (id == null) {
             throw new IllegalArgumentException("id is empty!");
         }
-        return accountMapper.selectByPrimaryKey(id);
+        return accountDao.findById(id);
     }
 
     @Override
@@ -69,7 +65,7 @@ public class AccountServiceImpl implements AccountService {
         if (StringUtils.isEmpty(name)) {
             throw new IllegalArgumentException("name is empty!");
         }
-        return accountMapper.selectByName(name);
+        return accountDao.findByName(name);
     }
 
     @Override

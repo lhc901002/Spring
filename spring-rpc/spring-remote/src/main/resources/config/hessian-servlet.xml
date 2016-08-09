@@ -9,11 +9,11 @@
     <!-- configure hessian service -->
     <bean name="/MessageService" class="org.springframework.remoting.caucho.HessianServiceExporter">
         <property name="service" ref="messageService"/>
-        <property name="serviceInterface" value="org.michaelliu.spring.remote.service.MessageService"/>
+        <property name="serviceInterface" value="org.michaelliu.spring.service.MessageService"/>
     </bean>
     <bean name="/AccountService" class="org.springframework.remoting.caucho.HessianServiceExporter">
         <property name="service" ref="accountService"/>
-        <property name="serviceInterface" value="org.michaelliu.spring.remote.service.AccountService"/>
+        <property name="serviceInterface" value="org.michaelliu.spring.service.AccountService"/>
     </bean>
 
 </beans>
