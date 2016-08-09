@@ -50,8 +50,8 @@ public class TestAccountService {
     }
 
     public static void main(String[] args) {
-//        new TestAccountService().testSave();
-        new TestAccountService().testFind();
+        new TestAccountService().testSave();
+//        new TestAccountService().testFind();
     }
 
 }

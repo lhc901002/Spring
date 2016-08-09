@@ -12,25 +12,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-webservice</module>
         <module>spring-remote</module>
         <module>spring-redis</module>
         <module>spring-memcache</module>
     </modules>
 
-    <dependencies>
-        <!-- dependency on module spring-api -->
-        <dependency>
-            <groupId>org.michaelliu.spring</groupId>
-            <artifactId>spring-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <!-- dependency on module mybatis -->
-        <dependency>
-            <groupId>org.michaelliu.spring</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
 </project>

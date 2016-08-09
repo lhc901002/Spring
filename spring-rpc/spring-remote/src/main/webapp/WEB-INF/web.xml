@@ -8,7 +8,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:config/applicationContext.xml</param-value>
+        <param-value>classpath:config/cxf-servlet.xml</param-value>
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -35,6 +35,16 @@
     <servlet-mapping>
         <servlet-name>hessian</servlet-name>
         <url-pattern>/hessian/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>cxf</servlet-name>
+        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cxf</servlet-name>
+        <url-pattern>/cxf/*</url-pattern>
     </servlet-mapping>
 
     <filter>

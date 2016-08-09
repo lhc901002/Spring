@@ -13,15 +13,42 @@
 
     <properties>
         <hessian.version>4.0.38</hessian.version>
+        <cxf.version>3.1.6</cxf.version>
         <spring.version>4.3.0.RELEASE</spring.version>
     </properties>
 
     <dependencies>
+        <!-- dependency on module spring-api -->
+        <dependency>
+            <groupId>org.michaelliu.spring</groupId>
+            <artifactId>spring-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- dependency on module spring-mybatis -->
+        <dependency>
+            <groupId>org.michaelliu.spring</groupId>
+            <artifactId>spring-mybatis</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <!-- hessian dependency -->
         <dependency>
             <groupId>com.caucho</groupId>
             <artifactId>hessian</artifactId>
             <version>${hessian.version}</version>
+        </dependency>
+
+        <!-- cxf web service -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.version}</version>
         </dependency>
 
         <!-- spring MVC -->
