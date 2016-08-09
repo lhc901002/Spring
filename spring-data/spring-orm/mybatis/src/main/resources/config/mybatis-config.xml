@@ -3,9 +3,14 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+
     <typeAliases>
-        <typeAlias type="org.michaelliu.spring.beans.dto.Student" alias="Student" />
-        <typeAlias type="org.michaelliu.spring.beans.vo.StudentVo" alias="StudentVo" />
+        <typeAlias type="org.michaelliu.spring.beans.dto.Account" alias="Account" />
+        <typeAlias type="org.michaelliu.spring.beans.vo.AccountVo" alias="AccountVo" />
         <typeAlias type="org.michaelliu.spring.beans.dto.Product" alias="Product" />
         <typeAlias type="org.michaelliu.spring.beans.vo.ProductVo" alias="ProductVo" />
         <typeAlias type="org.michaelliu.spring.beans.vo.ProductFieldUpdateParam"
@@ -16,12 +21,11 @@
     </typeAliases>
 
     <typeHandlers>
-        <typeHandler javaType="String" jdbcType="TIMESTAMP" handler="org.michaelliu.spring.orm.mybatis.handler.DateTypeHandler" />
-        <typeHandler javaType="String" jdbcType="TINYINT" handler="org.michaelliu.spring.orm.mybatis.handler.ByteTypeHandler" />
+        <typeHandler javaType="String" jdbcType="TIMESTAMP" handler="org.michaelliu.spring.mybatis.handler.DateTypeHandler" />
     </typeHandlers>
 
     <mappers>
-        <mapper resource="mapper/StudentMapper.xml"/>
+        <mapper resource="mapper/AccountMapper.xml"/>
         <mapper resource="mapper/ProductMapper.xml"/>
         <mapper resource="mapper/OrderProductMapper.xml"/>
         <mapper resource="mapper/OrderMapper.xml"/>

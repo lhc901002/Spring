@@ -18,7 +18,7 @@ import java.util.Date;
 public class Account implements Serializable {
 
     private static final long serialVersionUID = -7479305894927713675L;
-    
+
     private Long id;
 
     private String name;

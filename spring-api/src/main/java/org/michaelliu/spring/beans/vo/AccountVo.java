@@ -1,16 +1,15 @@
-package org.michaelliu.spring.beans.dto;
+package org.michaelliu.spring.beans.vo;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
- * Created by Michael on 7/14/16.
+ * Created by Michael on 8/9/16.
  */
-public class Account implements Serializable {
+public class AccountVo implements Serializable {
 
-    private static final long serialVersionUID = -5533773720712391647L;
+    private static final long serialVersionUID = -7736650118727147762L;
 
     private Long id;
 
@@ -18,21 +17,9 @@ public class Account implements Serializable {
 
     private Integer balance;
 
-    private Date createTime;
+    private String createTime;
 
-    private Date updateTime;
-
-    public Account() {}
-
-    public Account(String name, Integer balance) {
-        this(null, name, balance);
-    }
-
-    public Account(Long id, String name, Integer balance) {
-        this.id = id;
-        this.name = name;
-        this.balance = balance;
-    }
+    private String updateTime;
 
     public Long getId() {
         return id;
@@ -58,19 +45,19 @@ public class Account implements Serializable {
         this.balance = balance;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
     }
 

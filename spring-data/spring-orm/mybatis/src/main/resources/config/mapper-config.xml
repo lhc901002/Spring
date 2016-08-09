@@ -4,25 +4,25 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 					       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="classpath:config/applicationContext-mybatis.xml" />
+    <import resource="classpath:config/data-source.xml" />
 
-    <bean id="studentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.michaelliu.spring.orm.mybatis.mapper.StudentMapper" />
+    <bean id="accountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.AccountMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
     <bean id="productMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.michaelliu.spring.orm.mybatis.mapper.ProductMapper" />
+        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.ProductMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
     <bean id="orderMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.michaelliu.spring.orm.mybatis.mapper.OrderMapper" />
+        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.OrderMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
     <bean id="orderProductMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.michaelliu.spring.orm.mybatis.mapper.OrderProductMapper" />
+        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.OrderProductMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 

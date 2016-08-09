@@ -20,21 +20,21 @@ public class TestProductMapper {
 
     public static void testSelectByPrimaryKey(Long id) {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/mapper-config.xml");
-        ProductMapper productMapper = (ProductMapper) context.getBean("productMapper");
+        ProductMapper productMapper = context.getBean("productMapper", ProductMapper.class);
         ProductVo productVo = productMapper.selectByPrimaryKey(id);
         log.info(JSON.toJSONString(productVo));
     }
 
     public static void testSelectAllWithOrder() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/mapper-config.xml");
-        ProductMapper productMapper = (ProductMapper) context.getBean("productMapper");
+        ProductMapper productMapper = context.getBean("productMapper", ProductMapper.class);
         List<ProductVo> productList = productMapper.selectAllWithOrder();
         log.info(JSON.toJSONString(productList));
     }
 
     public static void testInsertSelective(Product product) {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/mapper-config.xml");
-        ProductMapper productMapper = (ProductMapper) context.getBean("productMapper");
+        ProductMapper productMapper = context.getBean("productMapper", ProductMapper.class);
         System.out.println("insert data: " + JSON.toJSONString(product));
         int result = productMapper.insertSelective(product);
         System.out.println("insert result: " + result);
@@ -43,22 +43,22 @@ public class TestProductMapper {
 
     public static void testUpdateByPrimaryKeySelective(Product product) {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:config/mapper-config.xml");
-        ProductMapper productMapper = (ProductMapper) context.getBean("productMapper");
+        ProductMapper productMapper = context.getBean("productMapper", ProductMapper.class);
         System.out.println("update data: " + JSON.toJSONString(product));
         int result = productMapper.updateByPrimaryKeySelective(product);
         System.out.println("update result: " + result);
     }
 
     public static void main(String[] args) {
-//        testSelectByPrimaryKey(1l);
-//        Product product = new Product.Builder()
-//                .setName("Michael Liu")
-//                .setBalance(13)
-//                .setPrice(378)
-//                .setStatus((byte) 1)
-//                .build();
-//        testInsertSelective(product);
-//        testUpdateByPrimaryKeySelective(product);
+        testSelectByPrimaryKey(1l);
+        Product product = new Product.Builder()
+                .setName("Michael Liu")
+                .setBalance(13)
+                .setPrice(378)
+                .setStatus((byte) 1)
+                .build();
+        testInsertSelective(product);
+        testUpdateByPrimaryKeySelective(product);
         testSelectAllWithOrder();
     }
 
