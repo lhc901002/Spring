@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:jaxws="http://cxf.apache.org/jaxws"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://cxf.apache.org/jaxws
+					       http://cxf.apache.org/schemas/jaxws.xsd
+					       http://www.springframework.org/schema/beans
+					       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- configure web service using cxf -->
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<jaxws:endpoint id="accountService" implementor="org.michaelliu.spring.cxf.provider.impl.AccountServiceImpl"
+					address="/AccountService"/>
+
+</beans>

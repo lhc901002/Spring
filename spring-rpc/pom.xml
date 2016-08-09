@@ -12,9 +12,8 @@
     <artifactId>spring-rpc</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>spring-rmi</module>
-        <module>spring-hessian</module>
         <module>spring-webservice</module>
+        <module>spring-remote</module>
     </modules>
 
     <dependencies>

@@ -7,8 +7,8 @@
 					       http://www.springframework.org/schema/beans
 					       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <context:component-scan base-package="org.michaelliu.spring.orm.mybatis.service" />
-	<context:component-scan base-package="org.michaelliu.spring.orm.mybatis.mapper" />
+    <context:component-scan base-package="org.michaelliu.spring.mybatis.service" />
+	<context:component-scan base-package="org.michaelliu.spring.mybatis.mapper" />
 
 	<import resource="classpath:config/mapper-config.xml" />
 
