@@ -13,8 +13,8 @@
 					       http://www.springframework.org/schema/tx
 	   					   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="org.michaelliu.spring.jta.atomikos.service" />
-    <context:component-scan base-package="org.michaelliu.spring.jta.atomikos.dao" />
+    <context:component-scan base-package="org.michaelliu.spring.jta.service" />
+    <context:component-scan base-package="org.michaelliu.spring.jta.dao" />
 
     <context:property-placeholder location="classpath:property/persistence-mysql.properties" ignore-unresolvable="true" />
 
@@ -82,7 +82,7 @@
     </tx:advice>
 
     <aop:config proxy-target-class="true">
-        <aop:pointcut id="serviceMethod" expression="execution(public * org.michaelliu.spring.jta.atomikos.service.*.*(..))" />
+        <aop:pointcut id="serviceMethod" expression="execution(public * org.michaelliu.spring.jta.service.*.*(..))" />
         <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
     </aop:config>
 
