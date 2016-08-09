@@ -3,22 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>spring-nosql</artifactId>
+        <artifactId>spring-rpc</artifactId>
         <groupId>org.michaelliu.spring</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>memcache</artifactId>
 
-    <properties>
-        <memcache.version>2.6.6</memcache.version>
-    </properties>
+    <artifactId>spring-redis</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.danga</groupId>
-            <artifactId>java-memcached</artifactId>
-            <version>${memcache.version}</version>
-        </dependency>
-    </dependencies>
+
 </project>

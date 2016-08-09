@@ -4,6 +4,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.michaelliu.spring.beans.dto.Account;
 import org.michaelliu.spring.beans.vo.AccountVo;
 
+import javax.jws.WebService;
 import java.util.List;
 
 /**
@@ -12,6 +13,7 @@ import java.util.List;
  * RMI: rmi://localhost:1199/rmi/AccountService
  * Hessian: http://localhost:8080/hessian/AccountService
  */
+@WebService
 public interface AccountService {
 
     int saveOrUpdateSelective(Account account) throws Exception;

@@ -13,7 +13,6 @@
 
     <modules>
         <module>spring-jta</module>
-        <module>spring-nosql</module>
         <module>spring-orm</module>
     </modules>
 

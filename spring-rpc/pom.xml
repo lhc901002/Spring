@@ -14,6 +14,8 @@
     <modules>
         <module>spring-webservice</module>
         <module>spring-remote</module>
+        <module>spring-redis</module>
+        <module>spring-memcache</module>
     </modules>
 
     <dependencies>
