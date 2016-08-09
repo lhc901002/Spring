@@ -1,10 +1,10 @@
-package org.michaelliu.spring.remote.provider;
+package org.michaelliu.spring.remote.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.michaelliu.spring.beans.Account;
-import org.michaelliu.spring.remote.AccountService;
+import org.michaelliu.spring.remote.service.AccountService;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * Created by Michael on 7/14/16.
  */
-public class AccountServiceProvider implements AccountService {
+public class AccountServiceImpl implements AccountService {
 
-    private static final Log log = LogFactory.getLog(AccountServiceProvider.class);
+    private static final Log log = LogFactory.getLog(AccountServiceImpl.class);
 
     @Override
     public void saveOrUpdate(Account account) {

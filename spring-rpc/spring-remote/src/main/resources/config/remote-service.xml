@@ -4,15 +4,15 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 					       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="messageService" class="MessageServiceImpl"/>
-	<bean id="accountService" class="AccountServiceImpl"/>
+	<bean id="messageService" class="org.michaelliu.spring.remote.service.impl.MessageServiceImpl"/>
+	<bean id="accountService" class="org.michaelliu.spring.remote.service.impl.AccountServiceImpl"/>
 
 	<!-- configure rmi service -->
 	<bean id="messageServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
 		<!-- does not necessarily have to be the same name as the bean to be exported -->
 		<property name="serviceName" value="rmi/MessageService"/>
 		<property name="service" ref="messageService"/>
-		<property name="serviceInterface" value="org.michaelliu.spring.rmi.provider.MessageService"/>
+		<property name="serviceInterface" value="org.michaelliu.spring.remote.service.MessageService"/>
 		<!-- defaults to 1099 -->
 		<property name="registryPort" value="1199"/>
 	</bean>
@@ -20,7 +20,7 @@
 		<!-- does not necessarily have to be the same name as the bean to be exported -->
 		<property name="serviceName" value="rmi/AccountService"/>
 		<property name="service" ref="accountService"/>
-		<property name="serviceInterface" value="org.michaelliu.spring.rmi.provider.AccountService"/>
+		<property name="serviceInterface" value="org.michaelliu.spring.remote.service.AccountService"/>
 		<!-- defaults to 1099 -->
 		<property name="registryPort" value="1199"/>
 	</bean>

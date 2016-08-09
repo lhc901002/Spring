@@ -1,4 +1,4 @@
-package org.michaelliu.spring.remote;
+package org.michaelliu.spring.remote.service;
 
 /**
  * Created by Michael on 7/14/16

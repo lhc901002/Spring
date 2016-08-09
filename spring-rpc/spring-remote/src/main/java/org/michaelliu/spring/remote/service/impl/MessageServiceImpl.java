@@ -1,16 +1,16 @@
-package org.michaelliu.spring.remote.provider;
+package org.michaelliu.spring.remote.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.michaelliu.spring.remote.MessageService;
+import org.michaelliu.spring.remote.service.MessageService;
 
 /**
  * Created by Michael on 7/14/16.
  */
-public class MessageServiceProvider implements MessageService {
+public class MessageServiceImpl implements MessageService {
 
-    private static final Log log = LogFactory.getLog(MessageServiceProvider.class);
+    private static final Log log = LogFactory.getLog(MessageServiceImpl.class);
 
     @Override
     public String echo(String message) {

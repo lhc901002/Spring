@@ -1,4 +1,4 @@
-package org.michaelliu.spring.remote;
+package org.michaelliu.spring.remote.service;
 
 import org.michaelliu.spring.beans.Account;
 
