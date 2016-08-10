@@ -11,6 +11,8 @@
     <typeAliases>
         <typeAlias type="org.michaelliu.spring.beans.dto.Account" alias="Account" />
         <typeAlias type="org.michaelliu.spring.beans.vo.AccountVo" alias="AccountVo" />
+        <typeAlias type="org.michaelliu.spring.beans.dto.Transaction" alias="Transaction" />
+        <typeAlias type="org.michaelliu.spring.beans.vo.TransactionVo" alias="TransactionVo" />
         <typeAlias type="org.michaelliu.spring.beans.dto.Product" alias="Product" />
         <typeAlias type="org.michaelliu.spring.beans.vo.ProductVo" alias="ProductVo" />
         <typeAlias type="org.michaelliu.spring.beans.vo.ProductFieldUpdateParam"
@@ -26,6 +28,7 @@
 
     <mappers>
         <mapper resource="mapper/AccountMapper.xml"/>
+        <mapper resource="mapper/TransactionMapper.xml"/>
         <mapper resource="mapper/ProductMapper.xml"/>
         <mapper resource="mapper/OrderProductMapper.xml"/>
         <mapper resource="mapper/OrderMapper.xml"/>

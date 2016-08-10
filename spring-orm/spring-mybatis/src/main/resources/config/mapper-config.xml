@@ -11,6 +11,11 @@
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
+    <bean id="transactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.TransactionMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
     <bean id="productMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.ProductMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
