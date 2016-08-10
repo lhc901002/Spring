@@ -33,23 +33,7 @@
             <artifactId>spring-mybatis</artifactId>
             <version>${project.version}</version>
         </dependency>
-
-        <!-- spring core -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+        
         <!-- spring MVC -->
         <dependency>
             <groupId>org.springframework</groupId>
