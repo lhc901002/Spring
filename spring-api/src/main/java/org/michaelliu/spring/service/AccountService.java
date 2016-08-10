@@ -12,6 +12,7 @@ import java.util.List;
  *
  * RMI: rmi://localhost:1199/rmi/AccountService
  * Hessian: http://localhost:8080/hessian/AccountService
+ * cxf: http://localhost:8080/cxf/AccountService
  */
 @WebService
 public interface AccountService {

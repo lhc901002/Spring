@@ -1,4 +1,4 @@
-package org.michaelliu.spring.rmi.provider;
+package org.michaelliu.spring.rmi;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
