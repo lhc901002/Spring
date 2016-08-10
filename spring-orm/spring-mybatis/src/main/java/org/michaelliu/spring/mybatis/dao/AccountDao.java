@@ -21,6 +21,8 @@ public interface AccountDao {
 
     int updateByIdSelective(Account account);
 
+    int updateBalance(Long id, Integer amount);
+
     List findPageListByName(String name, PageBounds pageBounds);
 
     List findPageListByIdList(List<Long> idList, PageBounds pageBounds);

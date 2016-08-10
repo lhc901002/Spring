@@ -9,9 +9,12 @@ public class TestCxf extends RemoteServiceConsumer {
         super(context);
     }
 
-    public static void main(String[] args) {
-//        new TestRmi("classpath:config/cxf-client.xml").testSave();
-        new TestRmi("classpath:config/cxf-client.xml").testFind();
+    public static void main(String[] args) throws Exception {
+        TestCxf test = new TestCxf("classpath:config/cxf-client.xml");
+//        test.testSave();
+        test.testFind();
+        test.testSaveInSameBank();
+        test.testSaveInSameBank();
     }
 
 }

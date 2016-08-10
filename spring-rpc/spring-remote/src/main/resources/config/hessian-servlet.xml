@@ -15,5 +15,9 @@
         <property name="service" ref="accountService"/>
         <property name="serviceInterface" value="org.michaelliu.spring.service.AccountService"/>
     </bean>
+    <bean name="/TransactionService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+        <property name="service" ref="transactionService"/>
+        <property name="serviceInterface" value="org.michaelliu.spring.service.TransactionService"/>
+    </bean>
 
 </beans>

@@ -15,15 +15,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Michael on 8/9/16.
+ * Created by michael on 2016/8/10.
  */
-@Repository("accountDao")
-public class AccountDaoImpl extends SqlSessionDaoSupport implements AccountDao {
+@Repository("bankUsAccountDao")
+public class BankUsAccountDaoImpl extends SqlSessionDaoSupport implements AccountDao {
 
-    @Resource
+    @Resource(name = "bankUsAccountMapper")
     private AccountMapper accountMapper;
 
-    @Resource
+    @Resource(name = "bankUsSqlSessionFactory")
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory){
         super.setSqlSessionFactory(sqlSessionFactory);
     }

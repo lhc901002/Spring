@@ -10,8 +10,8 @@ import javax.jws.WebService;
 @WebService
 public interface TransactionService {
 
-    boolean saveInSameBank(Long fromAccountId, Long toAccountId, Transaction transaction) throws Exception;
+    boolean saveInSameBank(Transaction transaction) throws Exception;
 
-    boolean saveInDifferentBank(Long fromAccountId, Long toAccountId, Transaction transaction) throws Exception;
+    boolean saveInDifferentBank(Transaction transaction) throws Exception;
 
 }

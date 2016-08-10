@@ -9,9 +9,12 @@ public class TestHessian extends RemoteServiceConsumer {
         super(context);
     }
 
-    public static void main(String[] args) {
-//        new TestRmi("classpath:config/hessian-client.xml").testSave();
-        new TestRmi("classpath:config/hessian-client.xml").testFind();
+    public static void main(String[] args) throws Exception {
+        TestHessian test = new TestHessian("classpath:config/hessian-client.xml");
+//        test.testSave();
+        test.testFind();
+        test.testSaveInSameBank();
+        test.testSaveInSameBank();
     }
 
 }

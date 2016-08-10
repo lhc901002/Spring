@@ -20,4 +20,6 @@ public interface AccountMapper {
 
     int updateByPrimaryKeySelective(Account account);
 
+    int updateBalance(Long id, Integer amount);
+
 }

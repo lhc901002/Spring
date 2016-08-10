@@ -12,6 +12,16 @@
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
+    <bean id="bankChinaAccountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.AccountMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="bankUsAccountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.AccountMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
     <bean id="transactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.TransactionMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
@@ -25,21 +35,6 @@
     <bean id="bankUsTransactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.TransactionMapper" />
         <property name="sqlSessionFactory" ref="bankUsSqlSessionFactory" />
-    </bean>
-
-    <bean id="productMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.ProductMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-    </bean>
-
-    <bean id="orderMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.OrderMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-    </bean>
-
-    <bean id="orderProductMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.OrderProductMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
 </beans>

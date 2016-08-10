@@ -12,7 +12,11 @@
     <!-- configure web service using cxf -->
     <import resource="classpath:META-INF/cxf/cxf.xml" />
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+    <jaxws:endpoint id="messageService" implementor="org.michaelliu.spring.mybatis.service.impl.MessageServiceImpl"
+                    address="/MessageService"/>
     <jaxws:endpoint id="accountService" implementor="org.michaelliu.spring.mybatis.service.impl.AccountServiceImpl"
                     address="/AccountService"/>
+    <jaxws:endpoint id="transactionService" implementor="org.michaelliu.spring.mybatis.service.impl.TransactionServiceImpl"
+                    address="/TransactionService"/>
 
 </beans>
