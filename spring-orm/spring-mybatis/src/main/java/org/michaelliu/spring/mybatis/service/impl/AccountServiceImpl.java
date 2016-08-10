@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import javax.jws.WebService;
 import java.util.Date;
 import java.util.List;
 
@@ -22,9 +23,10 @@ import java.util.List;
  * Created by Michael on 8/9/16.
  */
 @Service("accountService")
+@WebService(endpointInterface = "org.michaelliu.spring.service.AccountService")
 public class AccountServiceImpl implements AccountService {
 
-    private static final Log log = LogFactory.getLog(AccountService.class);
+    private static final Log log = LogFactory.getLog(AccountServiceImpl.class);
 
     @Autowired
     private AccountDao accountDao;

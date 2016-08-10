@@ -2,18 +2,11 @@ package org.michaelliu.spring.beans;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 import java.io.Serializable;
 
 /**
  * Created by michael on 2016/8/2.
  */
-@XmlRootElement(name = "Account")
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "id", "name", "balance" })
 public class Account implements Serializable {
 
     private static final long serialVersionUID = -1979894774396318892L;

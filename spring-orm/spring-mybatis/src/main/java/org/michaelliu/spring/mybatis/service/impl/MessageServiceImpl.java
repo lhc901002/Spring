@@ -1,13 +1,18 @@
-package org.michaelliu.spring.service.impl;
+package org.michaelliu.spring.mybatis.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.michaelliu.spring.service.MessageService;
+import org.springframework.stereotype.Service;
+
+import javax.jws.WebService;
 
 /**
  * Created by Michael on 7/14/16.
  */
+@Service("messageService")
+@WebService(endpointInterface = "org.michaelliu.spring.service.MessageService")
 public class MessageServiceImpl implements MessageService {
 
     private static final Log log = LogFactory.getLog(MessageServiceImpl.class);

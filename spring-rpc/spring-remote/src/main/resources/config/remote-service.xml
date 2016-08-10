@@ -6,8 +6,6 @@
 
 	<import resource="classpath:config/applicationContext.xml" />
 
-	<bean id="messageService" class="org.michaelliu.spring.service.impl.MessageServiceImpl"/>
-
 	<!-- configure rmi service -->
 	<bean id="messageServiceExporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
 		<!-- does not necessarily have to be the same name as the bean to be exported -->
