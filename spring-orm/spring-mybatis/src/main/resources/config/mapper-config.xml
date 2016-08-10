@@ -4,7 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 					       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="classpath:config/data-source.xml" />
+    <import resource="classpath:config/datasource.xml" />
+    <import resource="classpath:config/jta-datasource.xml" />
 
     <bean id="accountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.AccountMapper" />
@@ -14,6 +15,16 @@
     <bean id="transactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.TransactionMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="bankChinaTransactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.TransactionMapper" />
+        <property name="sqlSessionFactory" ref="bankChinaSqlSessionFactory" />
+    </bean>
+
+    <bean id="bankUsTransactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.TransactionMapper" />
+        <property name="sqlSessionFactory" ref="bankUsSqlSessionFactory" />
     </bean>
 
     <bean id="productMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">

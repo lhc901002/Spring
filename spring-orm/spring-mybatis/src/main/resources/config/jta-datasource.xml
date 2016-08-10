@@ -13,9 +13,6 @@
 					       http://www.springframework.org/schema/tx
 	   					   http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="org.michaelliu.spring.jta.service" />
-    <context:component-scan base-package="org.michaelliu.spring.jta.dao" />
-
     <context:property-placeholder location="classpath:property/persistence-mysql.properties" ignore-unresolvable="true" />
 
     <bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
@@ -34,22 +31,14 @@
         <property name="userTransaction" ref="atomikosUserTransaction" />
     </bean>
 
-    <bean id="jdbcTemplateA" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSourceA" />
-    </bean>
-
-    <bean id="jdbcTemplateB" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSourceB" />
-    </bean>
-
-    <bean id="dataSourceA" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
+    <bean id="bankChinaDataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
         <property name="uniqueResourceName" value="XA1DBMS" />
         <property name="xaDataSourceClassName" value="${jdbc.driverClassName}" />
         <property name="xaProperties">
             <props>
-                <prop key="URL">${jdbc1.url}</prop>
-                <prop key="user">${jdbc1.username}</prop>
-                <prop key="password">${jdbc1.password}</prop>
+                <prop key="URL">${jdbc.bankchina.url}</prop>
+                <prop key="user">${jdbc.username}</prop>
+                <prop key="password">${jdbc.password}</prop>
             </props>
         </property>
         <property name="poolSize" value="3" />
@@ -57,19 +46,45 @@
         <property name="maxPoolSize" value="5" />
     </bean>
 
-    <bean id="dataSourceB" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
+    <bean id="bankUsDataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
         <property name="uniqueResourceName" value="XA2DBMS" />
         <property name="xaDataSourceClassName" value="${jdbc.driverClassName}" />
         <property name="xaProperties">
             <props>
-                <prop key="URL">${jdbc2.url}</prop>
-                <prop key="user">${jdbc2.username}</prop>
-                <prop key="password">${jdbc2.password}</prop>
+                <prop key="URL">${jdbc.bankus.url}</prop>
+                <prop key="user">${jdbc.username}</prop>
+                <prop key="password">${jdbc.password}</prop>
             </props>
         </property>
         <property name="poolSize" value="3" />
         <property name="minPoolSize" value="3" />
         <property name="maxPoolSize" value="5" />
+    </bean>
+
+    <bean id="bankChinaSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="bankChinaDataSource" />
+        <property name="configLocation" value="classpath:config/mybatis-config.xml" />
+        <!--添加分页插件-->
+        <property name="plugins">
+            <list>
+                <bean class="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
+                    <property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="bankUsSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="bankUsDataSource" />
+        <property name="configLocation" value="classpath:config/mybatis-config.xml" />
+        <!--添加分页插件-->
+        <property name="plugins">
+            <list>
+                <bean class="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
+                    <property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"/>
+                </bean>
+            </list>
+        </property>
     </bean>
 
     <tx:advice id="txAdvice" transaction-manager="springTransactionManager">
@@ -82,7 +97,7 @@
     </tx:advice>
 
     <aop:config proxy-target-class="true">
-        <aop:pointcut id="serviceMethod" expression="execution(public * org.michaelliu.spring.jta.service.*.*(..))" />
+        <aop:pointcut id="serviceMethod" expression="execution(public * org.michaelliu.spring.mybatis.service.*.*(..))" />
         <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
     </aop:config>
 

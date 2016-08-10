@@ -19,7 +19,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public String echo(String message) {
-        log.info("Message server receives: " + message);
+        log.info("echo receives: " + message);
         String rspStr;
         if (StringUtils.isEmpty(message)) {
             rspStr = "Message server has not received any message from client!";
@@ -28,7 +28,7 @@ public class MessageServiceImpl implements MessageService {
         } else {
             rspStr = "Message server responses: " + message;
         }
-        log.info("Message server responses: " + rspStr);
+        log.info("echo responses: " + rspStr);
         return rspStr;
     }
 

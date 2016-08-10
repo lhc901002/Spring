@@ -1,5 +1,7 @@
 package org.michaelliu.spring.beans.dto;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -12,16 +14,20 @@ import java.util.Date;
  */
 @XmlRootElement(name = "Transaction")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = { "id", "accountId", "amount", "createTime" })
+@XmlType(propOrder = { "id", "fromAccountId", "toAccountId", "amount", "type", "createTime" })
 public class Transaction implements Serializable {
 
     private static final long serialVersionUID = 6084937797293837555L;
 
     private Long id;
 
-    private Long accountId;
+    private Long fromAccountId;
+
+    private Long toAccountId;
 
     private Integer amount;
+
+    private Byte type;
 
     private Date createTime;
 
@@ -33,12 +39,20 @@ public class Transaction implements Serializable {
         this.id = id;
     }
 
-    public Long getAccountId() {
-        return accountId;
+    public Long getFromAccountId() {
+        return fromAccountId;
     }
 
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
+    public void setFromAccountId(Long fromAccountId) {
+        this.fromAccountId = fromAccountId;
+    }
+
+    public Long getToAccountId() {
+        return toAccountId;
+    }
+
+    public void setToAccountId(Long toAccountId) {
+        this.toAccountId = toAccountId;
     }
 
     public Integer getAmount() {
@@ -49,12 +63,32 @@ public class Transaction implements Serializable {
         this.amount = amount;
     }
 
+    public Byte getType() {
+        return type;
+    }
+
+    public void setType(Byte type) {
+        this.type = type;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("fromAccountId", fromAccountId)
+                .append("toAccountId", toAccountId)
+                .append("amount", amount)
+                .append("type", type)
+                .append("createTime", createTime)
+                .toString();
     }
 
 }

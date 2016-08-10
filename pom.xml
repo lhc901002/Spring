@@ -11,11 +11,10 @@
     <modules>
         <module>spring-api</module>
         <module>spring-core</module>
-        <module>spring-data</module>
-        <module>spring-task</module>
-        <module>spring-web</module>
         <module>spring-rpc</module>
         <module>spring-orm</module>
+        <module>spring-task</module>
+        <module>spring-web</module>
     </modules>
 
     <properties>
