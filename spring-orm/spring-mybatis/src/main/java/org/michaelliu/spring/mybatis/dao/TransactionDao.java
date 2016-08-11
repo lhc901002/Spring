@@ -13,7 +13,7 @@ public interface TransactionDao {
 
     TransactionVo findById(Long id);
 
-    List<TransactionVo> findByAccountId(Long accountId);
+    List<TransactionVo> findByFromAccountId(Long fromAccountId);
 
     List<TransactionVo> findByIdList(List<Long> idList);
 

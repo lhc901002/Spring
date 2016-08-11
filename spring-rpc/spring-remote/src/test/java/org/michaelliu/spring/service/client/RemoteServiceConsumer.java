@@ -70,7 +70,7 @@ public class RemoteServiceConsumer {
     public void testSaveInDifferentBank() throws Exception {
         Transaction transaction = new Transaction();
         transaction.setFromAccountId(1l);
-        transaction.setToAccountId(3l);
+        transaction.setToAccountId(2l);
         transaction.setAmount(200);
         transaction.setType((byte) 2);
         boolean result = transactionService.saveInDifferentBank(transaction);

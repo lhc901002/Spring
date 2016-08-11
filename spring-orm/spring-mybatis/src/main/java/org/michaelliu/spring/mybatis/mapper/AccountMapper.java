@@ -1,5 +1,6 @@
 package org.michaelliu.spring.mybatis.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.michaelliu.spring.beans.dto.Account;
 import org.michaelliu.spring.beans.vo.AccountVo;
 
@@ -20,6 +21,6 @@ public interface AccountMapper {
 
     int updateByPrimaryKeySelective(Account account);
 
-    int updateBalance(Long id, Integer amount);
+    int updateBalance(@Param("id") Long id, @Param("amount") Integer amount);
 
 }

@@ -20,7 +20,6 @@ CREATE TABLE `tb_transaction_log` (
   `type` TINYINT(2) NOT NULL DEFAULT -1 COMMENT '1 ',
   `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  FOREIGN KEY `fk_account_id` (`from_account_id`) REFERENCES tb_account(`id`),
   KEY `idx_account_id` (`from_account_id`),
   KEY `idx_type` (`type`),
   KEY `idx_create_time` (`create_time`)

@@ -12,7 +12,7 @@ public interface TransactionMapper {
 
     TransactionVo selectByPrimaryKey(Long id);
 
-    List<TransactionVo> selectByAccountId(Long accountId);
+    List<TransactionVo> selectByFromAccountId(Long fromAccountId);
 
     List<TransactionVo> selectByIdList(List<Long> idList);
 

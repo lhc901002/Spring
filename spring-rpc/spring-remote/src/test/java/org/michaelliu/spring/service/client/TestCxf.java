@@ -14,7 +14,7 @@ public class TestCxf extends RemoteServiceConsumer {
 //        test.testSave();
         test.testFind();
         test.testSaveInSameBank();
-        test.testSaveInSameBank();
+        test.testSaveInDifferentBank();
     }
 
 }

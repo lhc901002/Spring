@@ -33,7 +33,7 @@
 
     <bean id="bankChinaDataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
         <property name="uniqueResourceName" value="XA1DBMS" />
-        <property name="xaDataSourceClassName" value="${jdbc.driverClassName}" />
+        <property name="xaDataSourceClassName" value="${jdbc.xa.driverClassName}" />
         <property name="xaProperties">
             <props>
                 <prop key="URL">${jdbc.bankchina.url}</prop>
@@ -48,7 +48,7 @@
 
     <bean id="bankUsDataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
         <property name="uniqueResourceName" value="XA2DBMS" />
-        <property name="xaDataSourceClassName" value="${jdbc.driverClassName}" />
+        <property name="xaDataSourceClassName" value="${jdbc.xa.driverClassName}" />
         <property name="xaProperties">
             <props>
                 <prop key="URL">${jdbc.bankus.url}</prop>

@@ -34,8 +34,8 @@ public class TransactionDaoImpl extends SqlSessionDaoSupport implements Transact
     }
 
     @Override
-    public List<TransactionVo> findByAccountId(Long accountId) {
-        return transactionMapper.selectByAccountId(accountId);
+    public List<TransactionVo> findByFromAccountId(Long fromAccountId) {
+        return transactionMapper.selectByFromAccountId(fromAccountId);
     }
 
     @Override

@@ -6,13 +6,15 @@
 
     <resultMap id="BaseResultMap" type="TransactionVo">
         <id column="id" property="id" jdbcType="BIGINT"/>
-        <result column="account_id" property="accountId" jdbcType="BIGINT"/>
+        <result column="from_account_id" property="fromAccountId" jdbcType="BIGINT"/>
+        <result column="to_account_id" property="toAccountId" jdbcType="BIGINT"/>
         <result column="amount" property="amount" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="TINYINT"/>
         <result column="create_time" property="createTime" javaType="String" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, account_id, amount, create_time
+        id, from_account_id, to_account_id, amount, type, create_time
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
@@ -22,11 +24,11 @@
         WHERE id = #{id, jdbcType=BIGINT}
     </select>
 
-    <select id="selectByAccountId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    <select id="selectByFromAccountId" resultMap="BaseResultMap" parameterType="java.lang.Long">
         SELECT
         <include refid="Base_Column_List"/>
         FROM tb_transaction_log
-        WHERE account_id = #{accountId, jdbcType=BIGINT}
+        WHERE from_account_id = #{fromAccountId, jdbcType=BIGINT}
     </select>
 
     <select id="selectByIdList" resultMap="BaseResultMap" parameterType="java.util.List">
@@ -45,11 +47,17 @@
             <if test="id != null">
                 id,
             </if>
-            <if test="accountId != null">
-                account_id,
+            <if test="fromAccountId != null">
+                from_account_id,
+            </if>
+            <if test="toAccountId != null">
+                to_account_id,
             </if>
             <if test="amount != null">
                 amount,
+            </if>
+            <if test="type != null">
+                type,
             </if>
             <if test="createTime != null">
                 create_time,
@@ -59,11 +67,17 @@
             <if test="id != null">
                 #{id, jdbcType=BIGINT},
             </if>
-            <if test="accountId != null">
-                #{accountId, jdbcType=BIGINT},
+            <if test="fromAccountId != null">
+                #{fromAccountId, jdbcType=BIGINT},
             </if>
-            <if test="balance != null">
+            <if test="toAccountId != null">
+                #{toAccountId, jdbcType=BIGINT},
+            </if>
+            <if test="amount != null">
                 #{amount, jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type, jdbcType=TINYINT},
             </if>
             <if test="createTime != null">
                 #{createTime, jdbcType=TIMESTAMP},
@@ -74,11 +88,17 @@
     <update id="updateByPrimaryKeySelective" parameterType="Transaction">
         UPDATE tb_transaction_log
         <set>
-            <if test="accountId != null">
-                account_id = #{accountId, jdbcType=BIGINT},
+            <if test="fromAccountId != null">
+                from_account_id = #{fromAccountId, jdbcType=BIGINT},
+            </if>
+            <if test="toAccountId != null">
+                to_account_id = #{toAccountId, jdbcType=BIGINT},
             </if>
             <if test="amount != null">
                 amount = #{amount,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=TINYINT},
             </if>
             <if test="createTime != null">
                 create_time = #{createTime,jdbcType=TIMESTAMP},
