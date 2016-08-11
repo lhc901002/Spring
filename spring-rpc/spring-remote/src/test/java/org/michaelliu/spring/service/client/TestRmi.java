@@ -12,9 +12,9 @@ public class TestRmi extends RemoteServiceConsumer {
     public static void main(String[] args) throws Exception {
         TestRmi test = new TestRmi("classpath:config/rmi-client.xml");
 //        test.testSave();
-//        test.testFind();
+        test.testFind();
 //        test.testSaveInSameBank();
-        test.testSaveInDifferentBank();
+//        test.testSaveInDifferentBank();
     }
 
 }

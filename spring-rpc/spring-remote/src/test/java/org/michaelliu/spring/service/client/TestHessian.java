@@ -13,8 +13,8 @@ public class TestHessian extends RemoteServiceConsumer {
         TestHessian test = new TestHessian("classpath:config/hessian-client.xml");
 //        test.testSave();
         test.testFind();
-        test.testSaveInSameBank();
-        test.testSaveInDifferentBank();
+//        test.testSaveInSameBank();
+//        test.testSaveInDifferentBank();
     }
 
 }

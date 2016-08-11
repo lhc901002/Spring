@@ -13,8 +13,8 @@ public class TestCxf extends RemoteServiceConsumer {
         TestCxf test = new TestCxf("classpath:config/cxf-client.xml");
 //        test.testSave();
         test.testFind();
-        test.testSaveInSameBank();
-        test.testSaveInDifferentBank();
+//        test.testSaveInSameBank();
+//        test.testSaveInDifferentBank();
     }
 
 }

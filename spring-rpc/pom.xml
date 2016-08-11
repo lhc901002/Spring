@@ -15,6 +15,7 @@
         <module>spring-remote</module>
         <module>spring-redis</module>
         <module>spring-memcache</module>
+        <module>spring-webservice</module>
     </modules>
 
 </project>

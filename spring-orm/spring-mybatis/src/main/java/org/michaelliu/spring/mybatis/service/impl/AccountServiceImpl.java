@@ -83,6 +83,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED)
     public PageList findPageListByIdList(List<Long> idList, Integer page, Integer pageSize) {
         if (CollectionUtils.isEmpty(idList)) {
             throw new IllegalArgumentException("id list is empty!");

@@ -10,11 +10,25 @@
     <context:property-placeholder location="classpath:property/url.properties" ignore-unresolvable="true" />
 
     <!--Web service using cxf-->
+    <bean id="messageService" class="org.michaelliu.spring.service.MessageService"
+          factory-bean="messageServiceFactory" factory-method="create"/>
+    <bean id="messageServiceFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+        <property name="serviceClass" value="org.michaelliu.spring.service.MessageService"/>
+        <property name="address" value="${cxf.message.url}"/>
+    </bean>
+
     <bean id="accountService" class="org.michaelliu.spring.service.AccountService"
           factory-bean="accountServiceFactory" factory-method="create"/>
     <bean id="accountServiceFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
         <property name="serviceClass" value="org.michaelliu.spring.service.AccountService"/>
         <property name="address" value="${cxf.account.url}"/>
+    </bean>
+
+    <bean id="transactionService" class="org.michaelliu.spring.service.TransactionService"
+          factory-bean="transactionServiceFactory" factory-method="create"/>
+    <bean id="transactionServiceFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+        <property name="serviceClass" value="org.michaelliu.spring.service.TransactionService"/>
+        <property name="address" value="${cxf.transaction.url}"/>
     </bean>
 
 

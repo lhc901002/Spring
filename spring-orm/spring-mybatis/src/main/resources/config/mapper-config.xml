@@ -14,12 +14,12 @@
 
     <bean id="bankChinaAccountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.AccountMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        <property name="sqlSessionFactory" ref="bankChinaSqlSessionFactory" />
     </bean>
 
     <bean id="bankUsAccountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="org.michaelliu.spring.mybatis.mapper.AccountMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        <property name="sqlSessionFactory" ref="bankUsSqlSessionFactory" />
     </bean>
 
     <bean id="transactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
