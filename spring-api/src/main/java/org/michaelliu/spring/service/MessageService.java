@@ -7,6 +7,7 @@ import javax.jws.WebService;
  *
  * RMI: rmi://localhost:1199/rmi/MessageService
  * Hessian: http://localhost:8080/hessian/MessageService
+ * cxf: http://localhost:8080/cxf/MessageService
  */
 @WebService
 public interface MessageService {

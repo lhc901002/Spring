@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd
+					       http://www.springframework.org/schema/beans
+					       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="accountService" class="org.michaelliu.demo.spring.aop.service.impl.AccountServiceImpl"/>
+
+    <!-- Aspect -->
+    <bean id="logAspectConfiguration" class="org.michaelliu.demo.spring.aop.aspect.LogAspectConfiguration" />
+
+    <!-- xml configuration for aspects -->
+    <aop:config>
+        <aop:aspect ref="logAspectConfiguration">
+            <aop:before method="logBefore"
+                        pointcut="execution(* org.michaelliu.demo.spring.aop.service.AccountService.*(..))"/>
+            <aop:around method="logAround"
+                        pointcut="execution(* org.michaelliu.demo.spring.aop.service.AccountService.*(..))"/>
+            <aop:after method="logAfter"
+                       pointcut="execution(* org.michaelliu.demo.spring.aop.service.AccountService.*(..))"/>
+            <aop:after-returning method="logAfterReturning"
+                                 pointcut="execution(* org.michaelliu.demo.spring.aop.service.AccountService.*(..))"
+                                 returning="result"/>
+            <aop:after-throwing method="logAfterThrowing"
+                                pointcut="execution(* org.michaelliu.demo.spring.aop.service.AccountService.*(..))"
+                                throwing="error"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

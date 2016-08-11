@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+					       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="account" class="org.michaelliu.demo.spring.ioc.beans.Account">
+        <property name="id" value="123"/>
+        <property name="name" value="Michael"/>
+        <property name="balance" value="1000"/>
+    </bean>
+
+    <!--bean with collection as properties-->
+    <bean id="manager" class="org.michaelliu.demo.spring.ioc.beans.Manager">
+        <property name="id" value="1999"/>
+        <property name="account" ref="account"/>
+        <property name="cities">
+            <list value-type="java.lang.String">
+                <value>Beijing</value>
+                <value>Shanghai</value>
+                <value>New York</value>
+            </list>
+        </property>
+        <property name="countries">
+            <set>
+                <value>China</value>
+                <value>Japan</value>
+                <value>United States</value>
+            </set>
+        </property>
+        <property name="persons">
+            <map>
+                <entry key="100" value="Michael" />
+                <entry key="101" value="Tom" />
+                <entry key="102" value="Jack" />
+            </map>
+        </property>
+    </bean>
+
+</beans>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+					       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="accountService" class="org.michaelliu.demo.spring.aop.service.impl.AccountServiceImpl"/>
+
+    <bean id="logBeforeAdvice" class="org.michaelliu.demo.spring.aop.advice.LogBeforeAdvice"/>
+    <bean id="logAfterAdvice" class="org.michaelliu.demo.spring.aop.advice.LogAfterAdvice"/>
+    <bean id="logAroundAdvice" class="org.michaelliu.demo.spring.aop.advice.LogAroundAdvice"/>
+    <bean id="logThrowAdvice" class="org.michaelliu.demo.spring.aop.advice.LogThrowAdvice"/>
+    <bean id="timeAroundAdvice" class="org.michaelliu.demo.spring.aop.advice.TimeAroundAdvice"/>
+
+    <bean id="accountServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="accountService" />
+        <property name="interceptorNames">
+            <list>
+                <value>logBeforeAdvice</value>
+                <value>logAfterAdvice</value>
+                <value>logAroundAdvice</value>
+                <value>logThrowAdvice</value>
+                <value>timeAroundAdvice</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
